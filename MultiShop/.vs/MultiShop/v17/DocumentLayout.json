@@ -1,71 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{8B6761A4-6BFD-4A9B-A42B-3C91BAE6B518}|Services\\Discount\\MultiShop.Discount\\MultiShop.Discount.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\services\\discount\\multishop.discount\\services\\concrete\\discountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B6761A4-6BFD-4A9B-A42B-3C91BAE6B518}|Services\\Discount\\MultiShop.Discount\\MultiShop.Discount.csproj|solutionrelative:services\\discount\\multishop.discount\\services\\concrete\\discountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B6761A4-6BFD-4A9B-A42B-3C91BAE6B518}|Services\\Discount\\MultiShop.Discount\\MultiShop.Discount.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\services\\discount\\multishop.discount\\controllers\\discountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B6761A4-6BFD-4A9B-A42B-3C91BAE6B518}|Services\\Discount\\MultiShop.Discount\\MultiShop.Discount.csproj|solutionrelative:services\\discount\\multishop.discount\\controllers\\discountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B6761A4-6BFD-4A9B-A42B-3C91BAE6B518}|Services\\Discount\\MultiShop.Discount\\MultiShop.Discount.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\services\\discount\\multishop.discount\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B6761A4-6BFD-4A9B-A42B-3C91BAE6B518}|Services\\Discount\\MultiShop.Discount\\MultiShop.Discount.csproj|solutionrelative:services\\discount\\multishop.discount\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DiscountService.cs",
-              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\Services\\Discount\\MultiShop.Discount\\Services\\Concrete\\DiscountService.cs",
-              "RelativeDocumentMoniker": "Services\\Discount\\MultiShop.Discount\\Services\\Concrete\\DiscountService.cs",
-              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\Services\\Discount\\MultiShop.Discount\\Services\\Concrete\\DiscountService.cs",
-              "RelativeToolTip": "Services\\Discount\\MultiShop.Discount\\Services\\Concrete\\DiscountService.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAA5wCoAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T22:00:14.94Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\Services\\Discount\\MultiShop.Discount\\Program.cs",
-              "RelativeDocumentMoniker": "Services\\Discount\\MultiShop.Discount\\Program.cs",
-              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\Services\\Discount\\MultiShop.Discount\\Program.cs",
-              "RelativeToolTip": "Services\\Discount\\MultiShop.Discount\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T21:58:09.897Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DiscountsController.cs",
-              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\Services\\Discount\\MultiShop.Discount\\Controllers\\DiscountsController.cs",
-              "RelativeDocumentMoniker": "Services\\Discount\\MultiShop.Discount\\Controllers\\DiscountsController.cs",
-              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\Services\\Discount\\MultiShop.Discount\\Controllers\\DiscountsController.cs",
-              "RelativeToolTip": "Services\\Discount\\MultiShop.Discount\\Controllers\\DiscountsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T21:55:33.525Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
