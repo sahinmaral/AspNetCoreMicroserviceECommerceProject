@@ -1,5 +1,6 @@
 ﻿using MediatR;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.Order.Application.Features.Orderings.Commands.Create;
@@ -10,6 +11,7 @@ using MultiShop.Order.Application.Features.Orderings.Queries.GetById;
 
 namespace MultiShop.Order.WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderingsController : ControllerBase

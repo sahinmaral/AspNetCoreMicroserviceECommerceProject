@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using MultiShop.Catalog.Services.Abstract;
 using MultiShop.Catalog.Services.Concrete;
 using MultiShop.Catalog.Settings;
@@ -22,6 +24,13 @@ builder.Services.AddScoped<IProductImageService, ProductImageService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer((opt) =>
+{
+    opt.Authority = builder.Configuration["IdentityServerURL"];
+    opt.RequireHttpsMetadata = false;
+    opt.Audience = "ResourceCatalog";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +40,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

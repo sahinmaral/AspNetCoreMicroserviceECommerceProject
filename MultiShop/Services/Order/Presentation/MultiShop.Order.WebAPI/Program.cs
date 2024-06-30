@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using MultiShop.Order.Application;
 using MultiShop.Order.Persistance;
 
@@ -15,6 +17,13 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddPersistanceServices(builder.Configuration).AddApplicationServices();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer((opt) =>
+{
+    opt.Authority = builder.Configuration["IdentityServerURL"];
+    opt.RequireHttpsMetadata = false;
+    opt.Audience = "ResourceOrder";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,8 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
