@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\controllers\\shoppingcartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\controllers\\shoppingcartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ShoppingCartController.cs",
+              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Controllers\\ShoppingCartController.cs",
+              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\Controllers\\ShoppingCartController.cs",
+              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Controllers\\ShoppingCartController.cs",
+              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\Controllers\\ShoppingCartController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T23:37:47.524Z",
+              "EditorCaption": ""
             }
           ]
         }

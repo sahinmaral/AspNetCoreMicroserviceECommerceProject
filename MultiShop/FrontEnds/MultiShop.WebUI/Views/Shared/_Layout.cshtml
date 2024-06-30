@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("Header")
+
+<body>
+    @await Component.InvokeAsync("Topbar")
+    @await Component.InvokeAsync("Navbar")
+    <!-- Main Container Start -->
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+    <!-- Main Container End -->
+    
+    @await Component.InvokeAsync("Footer")
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    @await Component.InvokeAsync("LayoutScripts")
+</body>
+
+</html>
