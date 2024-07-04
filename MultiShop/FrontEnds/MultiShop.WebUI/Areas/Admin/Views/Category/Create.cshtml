@@ -1,0 +1,25 @@
+﻿@model CreateCategoryDto
+
+@{
+    ViewData["Title"] = "Kategori ekleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Kategori ekle</h3>
+    <p>Yeni kategori eklemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Create" asp-controller="Category" asp-area="Admin" method="post">
+                <div class="form-group">
+                    <label for="name">Kategori adı</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="name">
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

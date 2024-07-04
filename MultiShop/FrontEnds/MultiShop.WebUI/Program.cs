@@ -1,7 +1,24 @@
+using Microsoft.Extensions.DependencyInjection;
+
+using MultiShop.WebUI.Services;
+
+using Refit;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+var mvcBuilder = builder.Services.AddControllersWithViews();
+
+if (builder.Environment.IsDevelopment())
+{
+    mvcBuilder.AddRazorRuntimeCompilation();
+}
+
+builder.Services.AddSingleton<ICatalogApi>((sp) =>
+{
+    ICatalogApi catalogApi = RestService.For<ICatalogApi>(builder.Configuration["CatalogApiUrl"]);
+    return catalogApi;
+});
 
 var app = builder.Build();
 
@@ -13,12 +30,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

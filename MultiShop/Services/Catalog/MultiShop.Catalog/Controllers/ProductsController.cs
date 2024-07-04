@@ -6,7 +6,8 @@ using MultiShop.Catalog.Services.Abstract;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -22,6 +23,13 @@ namespace MultiShop.Catalog.Controllers
         public async Task<IActionResult> GetAll()
         {
             var categories = await _productService.GetAllAsync();
+            return Ok(categories);
+        }
+
+        [HttpGet("category/{id}")]
+        public async Task<IActionResult> GetAllByCategoryId(string id)
+        {
+            var categories = await _productService.GetAllByCategoryIdAsync(id);
             return Ok(categories);
         }
 

@@ -1,18 +1,18 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 
-@await Component.InvokeAsync("Header")
+@await Component.InvokeAsync("LayoutHeader")
 
 <body>
-    @await Component.InvokeAsync("Topbar")
-    @await Component.InvokeAsync("Navbar")
+    @await Component.InvokeAsync("LayoutTopbar")
+    @await Component.InvokeAsync("LayoutNavbar")
     <!-- Main Container Start -->
     <div class="container-fluid">
         @RenderBody()
     </div>
     <!-- Main Container End -->
     
-    @await Component.InvokeAsync("Footer")
+    @await Component.InvokeAsync("LayoutFooter")
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 

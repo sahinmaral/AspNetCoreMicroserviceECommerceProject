@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("AdminLayoutHeader")
+
+<body class="sidebar-mini">
+    <div class="wrapper">
+
+        <!-- Main Header -->
+        <header class="main-header dark-bg">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo dark-bg">
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><img src="~/admin-template/dist/img/logo.jpg" alt="MultiShop">
+            </a>
+
+
+            @await Component.InvokeAsync("AdminLayoutNavbar")
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        @await Component.InvokeAsync("AdminLayoutSidebar")
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content container-fluid">
+                @RenderBody()
+            </section>
+            <!-- content -->
+        </div>
+        <!-- content-wrapper -->
+        @await Component.InvokeAsync("AdminLayoutFooter")
+    </div>
+
+    @await Component.InvokeAsync("AdminLayoutScripts")
+</body>
+</html>

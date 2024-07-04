@@ -1,0 +1,27 @@
+﻿@model ResultCategoryDto
+
+@{
+    ViewData["Title"] = "Kategori güncelleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Kategori güncelle</h3>
+    <p>Varolan kategoriyi güncellemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Update" asp-controller="Category" asp-area="Admin" method="post">
+                <input type="hidden" class="form-control" name="id" value="@Model.Id">
+
+                <div class="form-group">
+                    <label for="name">Kategori adı</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="name" value="@Model.Name">
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

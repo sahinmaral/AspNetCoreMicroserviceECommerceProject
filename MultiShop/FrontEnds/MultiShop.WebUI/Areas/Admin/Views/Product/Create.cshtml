@@ -1,0 +1,42 @@
+﻿@model CreateProductDto
+
+@{
+    ViewData["Title"] = "Ürün ekleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Ürün ekle</h3>
+    <p>Yeni ürün eklemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Create" asp-controller="Product" asp-area="Admin" method="post">
+                <div class="form-group">
+                    <label for="name">Ürün adı</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="price">Ürün fiyatı</label>
+                    <input type="number" class="form-control" id="price" name="price">
+                </div>
+                <div class="form-group">
+                    <label for="categoryId">Ürünün kategorisi</label>
+                    <select class="form-control" asp-for="CategoryId" asp-items="ViewBag.Categories">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Ürün resmi</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl">
+                </div>
+                <div class="form-group">
+                    <label for="description">Ürün açıklaması</label>
+                    <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

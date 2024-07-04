@@ -38,6 +38,12 @@ namespace MultiShop.Catalog.Services.Concrete
             return _mapper.Map<List<ResultProductDto>>(categories);
         }
 
+        public async Task<List<ResultProductDto>> GetAllByCategoryIdAsync(string categoryId)
+        {
+            var categories = await _collection.Find(product => product.CategoryId == categoryId).ToListAsync();
+            return _mapper.Map<List<ResultProductDto>>(categories);
+        }
+
         public async Task<GetByProductIdDto> GetByIdAsync(string id)
         {
             var product = await _collection.Find(product => product.Id == id).FirstOrDefaultAsync();
