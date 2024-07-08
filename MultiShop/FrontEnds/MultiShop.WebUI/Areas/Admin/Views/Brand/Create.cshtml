@@ -1,0 +1,29 @@
+﻿@model CreateBrandDto
+
+@{
+    ViewData["Title"] = "Marka ekleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Marka ekle</h3>
+    <p>Yeni marka eklemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Create" asp-controller="Brand" asp-area="Admin" method="post">
+                <div class="form-group">
+                    <label for="name">Marka adı</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Marka resmi</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl">
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -20,31 +20,32 @@ namespace MultiShop.Catalog.Services.Concrete
 
         public async Task CreateAsync(CreateProductDetailDto dto)
         {
-            var category = _mapper.Map<ProductDetail>(dto);
-            await _collection.InsertOneAsync(category);
+            var productDetail = _mapper.Map<ProductDetail>(dto);
+            await _collection.InsertOneAsync(productDetail);
         }
 
         public async Task DeleteAsync(string id)
         {
-            await _collection.DeleteOneAsync(category => category.Id == id);
+            await _collection.DeleteOneAsync(productDetail => productDetail.Id == id);
         }
 
         public async Task<List<ResultProductDetailDto>> GetAllAsync()
         {
-            var categories = await _collection.Find(category => true).ToListAsync();
-            return _mapper.Map<List<ResultProductDetailDto>>(categories);
+            var productDetails = await _collection.Find(productDetail => true).ToListAsync();
+            return _mapper.Map<List<ResultProductDetailDto>>(productDetails);
         }
 
         public async Task<GetByProductDetailIdDto> GetByIdAsync(string id)
         {
-            var category = await _collection.Find(category => category.Id == id).FirstOrDefaultAsync();
-            return _mapper.Map<GetByProductDetailIdDto>(category);
+            var productDetail = await _collection.Find(productDetail => productDetail.Id == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByProductDetailIdDto>(productDetail);
         }
 
         public async Task UpdateAsync(UpdateProductDetailDto dto)
         {
-            var category = _mapper.Map<ProductDetail>(dto);
-            await _collection.FindOneAndReplaceAsync(category => category.Id == category.Id, category);
+            var productDetail = _mapper.Map<ProductDetail>(dto);
+            var filter = Builders<ProductDetail>.Filter.Eq(productDetail => productDetail.Id, productDetail.Id);
+            await _collection.FindOneAndReplaceAsync(filter, productDetail);
         }
     }
 }

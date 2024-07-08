@@ -1,0 +1,29 @@
+﻿@model ResultCustomerServiceDto
+
+@{
+    ViewData["Title"] = "Müşteri hizmeti ekleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Müşteri hizmeti ekle</h3>
+    <p>Yeni müşteri hizmeti eklemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Update" asp-controller="CustomerService" asp-area="Admin" method="post">
+                <div class="form-group">
+                    <label for="name">Müşteri hizmeti adı</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="name" value="@Model.Name">
+                </div>
+                <div class="form-group">
+                    @await Component.InvokeAsync("CustomerServiceIconSelect", new { selected = Model.Icon })
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>
+

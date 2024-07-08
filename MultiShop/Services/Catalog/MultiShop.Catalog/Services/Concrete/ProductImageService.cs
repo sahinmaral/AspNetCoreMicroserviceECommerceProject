@@ -21,31 +21,32 @@ namespace MultiShop.Catalog.Services.Concrete
 
         public async Task CreateAsync(CreateProductImageDto dto)
         {
-            var category = _mapper.Map<ProductImage>(dto);
-            await _collection.InsertOneAsync(category);
+            var productImage = _mapper.Map<ProductImage>(dto);
+            await _collection.InsertOneAsync(productImage);
         }
 
         public async Task DeleteAsync(string id)
         {
-            await _collection.DeleteOneAsync(category => category.Id == id);
+            await _collection.DeleteOneAsync(productImage => productImage.Id == id);
         }
 
         public async Task<List<ResultProductImageDto>> GetAllAsync()
         {
-            var categories = await _collection.Find(category => true).ToListAsync();
-            return _mapper.Map<List<ResultProductImageDto>>(categories);
+            var productImages = await _collection.Find(productImage => true).ToListAsync();
+            return _mapper.Map<List<ResultProductImageDto>>(productImages);
         }
 
         public async Task<GetByProductImageIdDto> GetByIdAsync(string id)
         {
-            var category = await _collection.Find(category => category.Id == id).FirstOrDefaultAsync();
-            return _mapper.Map<GetByProductImageIdDto>(category);
+            var productImage = await _collection.Find(productImage => productImage.Id == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByProductImageIdDto>(productImage);
         }
 
         public async Task UpdateAsync(UpdateProductImageDto dto)
         {
-            var category = _mapper.Map<ProductImage>(dto);
-            await _collection.FindOneAndReplaceAsync(category => category.Id == category.Id, category);
+            var productImage = _mapper.Map<ProductImage>(dto);
+            var filter = Builders<ProductImage>.Filter.Eq(productImage => productImage.Id, productImage.Id);
+            await _collection.FindOneAndReplaceAsync(filter, productImage);
         }
     }
 }

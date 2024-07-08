@@ -34,14 +34,14 @@ namespace MultiShop.Catalog.Services.Concrete
 
         public async Task<List<ResultProductDto>> GetAllAsync()
         {
-            var categories = await _collection.Find(product => true).ToListAsync();
-            return _mapper.Map<List<ResultProductDto>>(categories);
+            var products = await _collection.Find(product => true).ToListAsync();
+            return _mapper.Map<List<ResultProductDto>>(products);
         }
 
         public async Task<List<ResultProductDto>> GetAllByCategoryIdAsync(string categoryId)
         {
-            var categories = await _collection.Find(product => product.CategoryId == categoryId).ToListAsync();
-            return _mapper.Map<List<ResultProductDto>>(categories);
+            var products = await _collection.Find(product => product.CategoryId == categoryId).ToListAsync();
+            return _mapper.Map<List<ResultProductDto>>(products);
         }
 
         public async Task<GetByProductIdDto> GetByIdAsync(string id)
@@ -53,7 +53,8 @@ namespace MultiShop.Catalog.Services.Concrete
         public async Task UpdateAsync(UpdateProductDto dto)
         {
             var product = _mapper.Map<Product>(dto);
-            await _collection.FindOneAndReplaceAsync(product => product.Id == product.Id, product);
+            var filter = Builders<Product>.Filter.Eq(product => product.Id, product.Id);
+            await _collection.FindOneAndReplaceAsync(filter, product);
         }
     }
 }

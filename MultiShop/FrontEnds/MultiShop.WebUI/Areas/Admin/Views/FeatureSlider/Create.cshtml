@@ -1,0 +1,52 @@
+﻿@model CreateFeatureSliderDto
+
+@{
+    ViewData["Title"] = "Öne çıkan görsel ekleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Öne çıkan görsel ekle</h3>
+    <p>Yeni Öne çıkan görsel eklemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Create" asp-controller="FeatureSlider" asp-area="Admin" method="post">
+                <div class="form-group">
+                    <label for="title">Görsel başlığı</label>
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Görsel resmi</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl">
+                </div>
+                <div class="form-group">
+                    <label for="description">Görsel açıklaması</label>
+                    <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="description">Görsel durumu</label>
+                    <div class="radio">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="status">
+                                    <input type="radio" name="status" value="true" checked>
+                                    <span>Gösterilsin</span>
+                                </label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="status">
+                                    <input type="radio" name="status" value="false">
+                                    <span>Gösterilmesin</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

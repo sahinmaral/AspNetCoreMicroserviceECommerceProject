@@ -1,0 +1,38 @@
+﻿@model CreateAboutDto
+
+@{
+    ViewData["Title"] = "Hakkında ekleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Hakkında ekle</h3>
+    <p>Yeni ürün eklemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Create" asp-controller="About" asp-area="Admin" method="post">
+                <div class="form-group">
+                    <label for="description">Açıklama</label>
+                    <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-posta adresi</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="address">Adres</label>
+                    <input type="text" class="form-control" id="address" name="address">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Telefon numarası</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+                </div>
+
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

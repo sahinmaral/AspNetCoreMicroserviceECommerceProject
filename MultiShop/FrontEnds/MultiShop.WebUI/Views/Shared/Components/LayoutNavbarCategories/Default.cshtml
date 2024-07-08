@@ -1,0 +1,6 @@
+﻿@model List<ResultCategoryDto>
+
+@foreach(var category in Model)
+{
+    <a href="/products?categoryId=@category.Id" class="nav-item nav-link">@category.Name</a>
+}

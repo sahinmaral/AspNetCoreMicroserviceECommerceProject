@@ -1,0 +1,38 @@
+﻿@model ResultAboutDto
+
+@{
+    ViewData["Title"] = "Hakkında güncelleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Hakkında güncelle</h3>
+    <p>Varolan hakkındayı güncellemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Update" asp-controller="About" asp-area="Admin" method="post">
+                <div class="form-group">
+                    <label for="description">Açıklama</label>
+                    <textarea class="form-control" id="description" rows="3" name="description">@Model.Description</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-posta adresi</label>
+                    <input type="email" class="form-control" id="email" name="email" value="@Model.Email">
+                </div>
+                <div class="form-group">
+                    <label for="address">Adres</label>
+                    <input type="text" class="form-control" id="address" name="address" value="@Model.Address">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Telefon numarası</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="@Model.PhoneNumber">
+                </div>
+
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

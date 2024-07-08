@@ -1,24 +1,19 @@
-﻿﻿<div class="container-fluid pt-5 pb-3">
+﻿@model List<ResultOfferDiscountDto>
+
+﻿<div class="container-fluid pt-5 pb-3">
     <div class="row px-xl-5">
-        <div class="col-md-6">
-            <div class="product-offer mb-30" style="height: 300px;">
-                <img class="img-fluid" src="~/template/img/room-1.jpg" alt="">
-                <div class="offer-text">
-                    <h6 class="text-white text-uppercase">%15 İndirim</h6>
-                    <h3 class="text-white mb-3">Ev Dekorasyonu</h3>
-                    <a href="" class="btn btn-primary">Alışverişe Başla</a>
+        @foreach(var discount in Model)
+        {
+            <div class="col-md-6">
+                <div class="product-offer mb-30" style="height: 300px;">
+                    <img class="img-fluid" src="@discount.ImageUrl" alt="discountImage">
+                    <div class="offer-text">
+                        <h6 class="text-white text-uppercase">@discount.Title</h6>
+                        <h3 class="text-white mb-3">@discount.SubTitle</h3>
+                        <a href="" class="btn btn-primary">Alışverişe Başla</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="product-offer mb-30" style="height: 300px;">
-                <img class="img-fluid" src="~/template/img/room-2.jpg" alt="">
-                <div class="offer-text">
-                    <h6 class="text-white text-uppercase">%25 Ek İndirim</h6>
-                    <h3 class="text-white mb-3">Ahşap Oda Araçları</h3>
-                    <a href="" class="btn btn-primary">Hemen İncele</a>
-                </div>
-            </div>
-        </div>
+        }  
     </div>
 </div>

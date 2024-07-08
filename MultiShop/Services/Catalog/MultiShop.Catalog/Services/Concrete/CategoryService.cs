@@ -45,7 +45,8 @@ namespace MultiShop.Catalog.Services.Concrete
         public async Task UpdateAsync(UpdateCategoryDto dto)
         {
             var category = _mapper.Map<Category>(dto);
-            await _collection.FindOneAndReplaceAsync(category => category.Id == category.Id, category);
+            var filter = Builders<Category>.Filter.Eq(category => category.Id, category.Id);
+            await _collection.FindOneAndReplaceAsync(filter, category);
         }
     }
 }

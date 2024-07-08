@@ -9,7 +9,7 @@
         <header class="main-header dark-bg">
 
             <!-- Logo -->
-            <a href="index.html" class="logo dark-bg">
+            <a href="/admin" class="logo dark-bg">
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><img src="~/admin-template/dist/img/logo.jpg" alt="MultiShop">
             </a>
@@ -33,5 +33,6 @@
     </div>
 
     @await Component.InvokeAsync("AdminLayoutScripts")
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

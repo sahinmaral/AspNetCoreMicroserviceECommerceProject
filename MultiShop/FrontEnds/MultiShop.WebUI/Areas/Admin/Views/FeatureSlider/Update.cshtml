@@ -1,0 +1,54 @@
+﻿@model ResultFeatureSliderDto
+
+@{
+    ViewData["Title"] = "Öne çıkan görsel güncelleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Öne çıkan görsel güncelle</h3>
+    <p>Varolan öne çıkan görseli güncellemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Update" asp-controller="FeatureSlider" asp-area="Admin" method="post">
+                <input type="hidden" class="form-control" name="id" value="@Model.Id">
+
+                <div class="form-group">
+                    <label for="title">Görsel başlığı</label>
+                    <input type="text" class="form-control" id="title" name="title" value="@Model.Title">
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Görsel resmi</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" value="@Model.ImageUrl">
+                </div>
+                <div class="form-group">
+                    <label for="description">Görsel açıklaması</label>
+                    <textarea class="form-control" id="description" rows="3" name="description">@Model.Description</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="description">Görsel durumu</label>
+                    <div class="radio">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="status">
+                                    <input type="radio" name="status" value="true" @(Model.Status ? "checked" : "")>
+                                    <span>Gösterilsin</span>
+                                </label>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="status">
+                                    <input type="radio" name="status" value="false" @(!Model.Status ? "checked" : "")>
+                                    <span>Gösterilmesin</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

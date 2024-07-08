@@ -1,28 +1,32 @@
-﻿    <!-- Featured Start -->
-<div class="container-fluid pt-5">
-    <div class="row px-xl-5 pb-3">
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-                <h5 class="font-weight-semi-bold m-0">Kaliteli Ürünler</h5>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                <h5 class="font-weight-semi-bold m-0">Bedava Kargo</h5>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-                <h5 class="font-weight-semi-bold m-0">14 Gün İçerisinde İade</h5>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
-                <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                <h5 class="font-weight-semi-bold m-0">7/24 Destek</h5>
+﻿@model List<ResultCustomerServiceDto>
+
+@{
+    string getOverflowValueByModelCount()
+    {
+        return Model.Count > 4 ? "auto" : "hidden";
+    }
+}
+
+<style>
+    .service-item {
+        height: 100%;
+    }
+</style>
+
+<!-- Featured Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-lg-12">
+            <div class="d-flex flex-row flex-nowrap pb-4 pt-2" style="overflow-x: @getOverflowValueByModelCount(); overflow-y: hidden; white-space: nowrap;">
+                @foreach (var customerService in Model)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+                        <div class="bg-light p-3 d-flex flex-column align-items-center service-item">
+                            <h1 class="fa @customerService.Icon text-primary mb-3" style="font-size: 40px;"></h1>
+                            <h5 class="font-weight-semi-bold mb-0">@customerService.Name</h5>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>

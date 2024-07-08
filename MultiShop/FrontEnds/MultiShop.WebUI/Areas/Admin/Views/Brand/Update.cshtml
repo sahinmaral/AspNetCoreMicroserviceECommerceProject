@@ -1,0 +1,31 @@
+﻿@model ResultBrandDto
+
+@{
+    ViewData["Title"] = "Marka güncelleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Marka güncelle</h3>
+    <p>Varolan kategoriyi güncellemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Update" asp-controller="Brand" asp-area="Admin" method="post">
+                <input type="hidden" class="form-control" name="id" value="@Model.Id">
+
+                <div class="form-group">
+                    <label for="name">Marka adı</label>
+                    <input type="text" class="form-control" id="name" placeholder="" name="name" value="@Model.Name">
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Marka resmi</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" value="@Model.ImageUrl">
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

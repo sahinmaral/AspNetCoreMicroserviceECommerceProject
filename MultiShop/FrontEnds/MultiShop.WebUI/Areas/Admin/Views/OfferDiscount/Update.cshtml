@@ -1,0 +1,35 @@
+﻿@model ResultOfferDiscountDto
+
+@{
+    ViewData["Title"] = "İndirim fırsatı güncelleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>İndirim fırsatı güncelle</h3>
+    <p>Varolan indirim fırsatını güncellemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Update" asp-controller="OfferDiscount" asp-area="Admin" method="post">
+                <input type="hidden" class="form-control" name="id" value="@Model.Id">
+
+                <div class="form-group">
+                    <label for="title">Özel fırsat başlığı</label>
+                    <input type="text" class="form-control" id="title" name="title" value="@Model.Title">
+                </div>
+                <div class="form-group">
+                    <label for="subTitle">Özel fırsat alt başlığı</label>
+                    <input type="text" class="form-control" id="subTitle" name="subTitle" value="@Model.SubTitle">
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Görsel resmi</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" value="@Model.ImageUrl">
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

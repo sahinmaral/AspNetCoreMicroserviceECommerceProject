@@ -1,12 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
+using MultiShop.WebUI.Services;
+
 namespace MultiShop.WebUI.ViewComponents
 {
     public class HomepageFeaturedProductsViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly ICatalogApi _catalogApi;
+
+        public HomepageFeaturedProductsViewComponent(ICatalogApi catalogApi)
         {
-            return View();
+            _catalogApi = catalogApi;
+        }
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            try
+            {
+                var products = await _catalogApi.GetProducts();
+                return View(products);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Ürünleri getirirken hata oluştu: {ex.Message}");
+                return View();
+            }
         }
     }
 }
