@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\views\\shared\\components\\productdetaildescription\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\shared\\components\\productdetaildescription\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\views\\shared\\components\\homepagefeaturedproducts\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\shared\\components\\homepagefeaturedproducts\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\viewcomponents\\productdetaildescriptionviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\viewcomponents\\productdetaildescriptionviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,40 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\HomepageFeaturedProducts\\Default.cshtml",
-              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\HomepageFeaturedProducts\\Default.cshtml",
-              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\HomepageFeaturedProducts\\Default.cshtml",
-              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\HomepageFeaturedProducts\\Default.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-08T01:00:31.129Z",
+              "Title": "ProductDetailDescriptionViewComponent.cs",
+              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\ViewComponents\\ProductDetailDescriptionViewComponent.cs",
+              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\ViewComponents\\ProductDetailDescriptionViewComponent.cs",
+              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\ViewComponents\\ProductDetailDescriptionViewComponent.cs",
+              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\ViewComponents\\ProductDetailDescriptionViewComponent.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAMwBsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T01:37:54.639Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Products\\Index.cshtml",
-              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\Views\\Products\\Index.cshtml",
-              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Products\\Index.cshtml",
-              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\Views\\Products\\Index.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAADMAAABmAAAA",
+              "Title": "Default.cshtml",
+              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\ProductDetailDescription\\Default.cshtml",
+              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\ProductDetailDescription\\Default.cshtml",
+              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\ProductDetailDescription\\Default.cshtml",
+              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\ProductDetailDescription\\Default.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-08T00:59:22.159Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Controllers\\ProductsController.cs",
-              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\Controllers\\ProductsController.cs",
-              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Controllers\\ProductsController.cs",
-              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\Controllers\\ProductsController.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAApwBUAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T00:17:22.077Z",
+              "WhenOpened": "2024-07-10T01:37:15.582Z",
               "EditorCaption": ""
             }
           ]

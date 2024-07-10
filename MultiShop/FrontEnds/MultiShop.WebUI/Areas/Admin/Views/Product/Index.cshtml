@@ -49,6 +49,21 @@
                                         <li>
                                             <a href="/admin/product/update/@product.Id"><i class="fa fa-angle-right"></i>Güncelle</a>
                                         </li>
+                                        <li>
+                                            <a href="/admin/product/images/@product.Id"><i class="fa fa-angle-right"></i>Resimlerini Güncelle</a>
+                                        </li>
+                                        <li class="treeview">
+                                            <a href="#"> <i class="fa fa-angle-right"></i> <span>Ürün Detayları</span><span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+                                            <ul class="treeview-menu" style="display: none;">
+                                                <li>
+                                                    <a href="/admin/product/detail/@product.Id"><i class="fa fa-angle-right"></i>Güncelle</a>
+                                                    <form asp-action="Delete" asp-controller="ProductDetail" asp-area="Admin" method="post">
+                                                        <input type="hidden" name="productId" value="@product.Id" />
+                                                        <button type="submit" class="btn btn-link" style="padding:8px 10px; text-decoration:none; color:#787878"><i class="fa fa-angle-right" style="width:10px; margin-right:6px;"></i>Sil</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>

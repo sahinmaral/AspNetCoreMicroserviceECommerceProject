@@ -10,5 +10,7 @@ namespace MultiShop.Catalog.Services.Abstract
         Task DeleteAsync(string id);
         Task<GetByProductIdDto> GetByIdAsync(string id);
         Task<List<ResultProductDto>> GetAllByCategoryIdAsync(string categoryId);
+        Task AddProductImages(ResultProductImagesDto dto);
+        Task UpdateProductImages(ResultProductImagesDto dto);
     }
 }

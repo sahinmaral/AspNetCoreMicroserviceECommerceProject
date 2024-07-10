@@ -1,32 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Detail";
+﻿@model ResultProductDto
+
+@{
+    ViewData["Title"] = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    decimal calculateDiscountedPrice(decimal price)
+    {
+        return (price * 85) / 100;
+    }
 }
 
 <div class="container-fluid pb-5">
     <div class="row px-xl-5">
         <div class="col-lg-5 mb-30">
-            @await Component.InvokeAsync("ProductDetailCarousel")
+            @await Component.InvokeAsync("ProductDetailCarousel", new { productImages = Model.AdditionalImageUrls })
         </div>
 
         <div class="col-lg-7 h-auto mb-30">
             <div class="h-100 bg-light p-30">
-                <h3>Product Name Goes Here</h3>
+                <h3>@Model.Name</h3>
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star-half-alt"></small>
-                        <small class="far fa-star"></small>
+                        <small class="fa fa-star"></small>
+                        <small class="fa fa-star"></small>
+                        <small class="fa fa-star"></small>
+                        <small class="fa fa-star"></small>
+                        <small class="fa fa-star-half-o"></small>
                     </div>
                     <small class="pt-1">(99 Reviews)</small>
                 </div>
-                <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
+                <h3 class="font-weight-semi-bold mb-4">@calculateDiscountedPrice(Model.Price).ToString("C")</h3>
                 <p class="mb-4">
-                    Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
-                    clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no sea
-                    Nonumy
+                    @Model.Description
                 </p>
                 <div class="d-flex mb-3">
                     <strong class="text-dark mr-3">Sizes:</strong>
@@ -101,16 +106,16 @@
                     <strong class="text-dark mr-2">Share on:</strong>
                     <div class="d-inline-flex">
                         <a class="text-dark px-2" href="">
-                            <i class="fab fa-facebook-f"></i>
+                            <i class="fa fa-facebook-f"></i>
                         </a>
                         <a class="text-dark px-2" href="">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fa fa-twitter"></i>
                         </a>
                         <a class="text-dark px-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
+                            <i class="fa fa-linkedin"></i>
                         </a>
                         <a class="text-dark px-2" href="">
-                            <i class="fab fa-pinterest"></i>
+                            <i class="fa fa-pinterest"></i>
                         </a>
                     </div>
                 </div>
@@ -126,15 +131,9 @@
                     <a class="nav-item nav-link text-dark" data-toggle="tab" href="#review-tab">Yorumlar (0)</a>
                 </div>
                 <div class="tab-content">
-                    <div class="tab-pane fade show active" id="description-tab">
-                        @await Component.InvokeAsync("ProductDetailDescription")
-                    </div>
-                    <div class="tab-pane fade" id="information-tab">
-                        @await Component.InvokeAsync("ProductDetailInformation")
-                    </div>
-                    <div class="tab-pane fade" id="review-tab">
-                        @await Component.InvokeAsync("ProductDetailReview")
-                    </div>
+                    @await Component.InvokeAsync("ProductDetailDescription", new { productId = Model.Id })
+
+                    @await Component.InvokeAsync("ProductDetailReview")
                 </div>
             </div>
         </div>

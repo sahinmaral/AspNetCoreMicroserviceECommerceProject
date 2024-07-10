@@ -56,5 +56,55 @@ namespace MultiShop.Catalog.Services.Concrete
             var filter = Builders<Product>.Filter.Eq(product => product.Id, product.Id);
             await _collection.FindOneAndReplaceAsync(filter, product);
         }
+
+        public async Task UpdateProductImages(ResultProductImagesDto dto)
+        {
+            var savedProductDto = await GetByIdAsync(dto.Id);
+            if (savedProductDto is null)
+                throw new NullReferenceException("Böyle bir ürün bulunamadı");
+
+            var savedProductEntity = _mapper.Map<Product>(savedProductDto);
+
+            CheckAndAddNewProductImage(dto, savedProductEntity);
+            CheckAndRemoveProductImage(dto, savedProductEntity);
+
+            var product = _mapper.Map<UpdateProductDto>(savedProductEntity);
+            await UpdateAsync(product);
+        }
+
+        private void CheckAndRemoveProductImage(ResultProductImagesDto dto, Product? savedProduct)
+        {
+            for (int i = 0; i < savedProduct.AdditionalImageUrls.Count; i++)
+            {
+                var image = savedProduct.AdditionalImageUrls[i];
+                var searchedImage = dto.AdditionalImageUrls.FirstOrDefault(x => x == image);
+                if (searchedImage is null)
+                    savedProduct.AdditionalImageUrls.Remove(image);
+            }
+        }
+
+        private void CheckAndAddNewProductImage(ResultProductImagesDto dto, Product? savedProduct)
+        {
+            for (int i = 0; i < dto.AdditionalImageUrls.Count; i++)
+            {
+                var image = dto.AdditionalImageUrls[i];
+                var searchedImage = savedProduct.AdditionalImageUrls.FirstOrDefault(x => x == image);
+                if (searchedImage is null)
+                    savedProduct.AdditionalImageUrls.Add(image);
+            }
+        }
+
+        public async Task AddProductImages(ResultProductImagesDto dto)
+        {
+            var productDto = await GetByIdAsync(dto.Id);
+            if (productDto is null)
+                throw new NullReferenceException("Böyle bir ürün bulunamadı");
+
+            var productEntity = _mapper.Map<Product>(productDto);
+
+            productEntity.AdditionalImageUrls = dto.AdditionalImageUrls;
+            var product = _mapper.Map<UpdateProductDto>(productEntity);
+            await UpdateAsync(product);
+        }
     }
 }

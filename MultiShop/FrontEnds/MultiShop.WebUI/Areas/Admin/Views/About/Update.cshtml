@@ -14,6 +14,7 @@
     <div class="col-md-12">
         <div class="chart-box">
             <form asp-action="Update" asp-controller="About" asp-area="Admin" method="post">
+                <input type="hidden" class="form-control" name="id" value="@Model.Id">
                 <div class="form-group">
                     <label for="description">Açıklama</label>
                     <textarea class="form-control" id="description" rows="3" name="description">@Model.Description</textarea>

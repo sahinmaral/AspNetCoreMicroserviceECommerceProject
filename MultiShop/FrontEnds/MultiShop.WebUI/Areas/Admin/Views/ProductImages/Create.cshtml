@@ -1,0 +1,72 @@
+﻿@model ResultProductImagesDto
+
+@{
+    ViewData["Title"] = "Ürün fotoğraf(ları) ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>@Model.Name için ürün fotoğrafı ekle</h3>
+    <p>Yeni ürün fotoğrafı eklemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Create" asp-controller="ProductImages" asp-area="Admin" method="post">
+                <input type="hidden" class="form-control" name="id" value="@Model.Id">
+                <div id="imageUrlsContainer">
+                    
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <button type="button" class="btn btn-default" id="addImageUrlButton">Yeni Fotoğraf Ekle</button>
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('addImageUrlButton').addEventListener('click', function () {
+            var container = document.getElementById('imageUrlsContainer');
+            var inputCount = container.getElementsByTagName('input').length;
+
+            var newInputGroup = document.createElement('div');
+            newInputGroup.style.marginBottom = '10px';
+            newInputGroup.style.display = 'flex';
+
+            var newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.name = 'AdditionalImageUrls[' + inputCount + ']';
+            newInput.className = 'form-control';
+            newInput.placeholder = 'Resim URL ' + (inputCount + 1);
+
+            var deleteButton = document.createElement('button');
+            deleteButton.type = 'button';
+            deleteButton.className = 'btn btn-danger delete-button';
+            deleteButton.style.height = "35px";
+            deleteButton.style.margin = "0 5px";
+            deleteButton.style.padding = "0 20px";
+            deleteButton.innerText = 'Sil';
+
+            deleteButton.addEventListener('click', function () {
+                container.removeChild(newInputGroup);
+            });
+
+            newInputGroup.appendChild(newInput);
+            newInputGroup.appendChild(deleteButton);
+            container.appendChild(newInputGroup);
+        });
+
+        document.querySelectorAll('.delete-button').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var inputGroup = this.parentElement;
+                var container = document.getElementById('imageUrlsContainer');
+                container.removeChild(inputGroup);
+            });
+        });
+    </script>
+}

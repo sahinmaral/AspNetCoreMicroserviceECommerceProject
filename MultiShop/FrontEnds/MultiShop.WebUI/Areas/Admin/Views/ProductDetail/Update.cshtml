@@ -1,0 +1,32 @@
+﻿@model ResultProductDetailDto
+
+@{
+    ViewData["Title"] = "Ürünün açıklamasını güncelleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Ürünün açıklamasını güncelle</h3>
+    <p>Varolan açıklamayı güncellemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="Update" asp-controller="ProductDetail" asp-area="Admin" method="post">
+                <input type="hidden" class="form-control" name="productId" value="@Model.ProductId">
+                <input type="hidden" class="form-control" name="id" value="@Model.Id">
+                <div class="form-group">
+                    <label for="description">Açıklama</label>
+                    <input type="text" class="form-control" id="description" name="description" value="@Model.Description">
+                </div>
+                <div class="form-group">
+                    <label for="information">Bilgilendirme</label>
+                    <textarea class="form-control" id="information" rows="3" name="information">@Model.Information</textarea>
+                </div>
+
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

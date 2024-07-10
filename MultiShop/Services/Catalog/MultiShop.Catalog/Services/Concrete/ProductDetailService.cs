@@ -6,6 +6,7 @@ using MongoDB.Driver;
 
 using MultiShop.Catalog.Dtos.ProductDetail;
 using MultiShop.Catalog.Entities.Concrete;
+using MultiShop.Catalog.Exceptions;
 using MultiShop.Catalog.Services.Abstract;
 using MultiShop.Catalog.Settings;
 
@@ -38,6 +39,14 @@ namespace MultiShop.Catalog.Services.Concrete
         public async Task<GetByProductDetailIdDto> GetByIdAsync(string id)
         {
             var productDetail = await _collection.Find(productDetail => productDetail.Id == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByProductDetailIdDto>(productDetail);
+        }
+
+        public async Task<GetByProductDetailIdDto> GetByProductIdAsync(string productId)
+        {
+            var productDetail = await _collection.Find(productDetail => productDetail.ProductId == productId).FirstOrDefaultAsync();
+            if (productDetail is null)
+                throw new EntityNullException("Bu ürüne ait ürün açıklaması bulunamadı.");
             return _mapper.Map<GetByProductDetailIdDto>(productDetail);
         }
 

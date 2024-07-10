@@ -33,6 +33,20 @@ namespace MultiShop.Catalog.Controllers
             return Ok(categories);
         }
 
+        [HttpPost("images")]
+        public async Task<IActionResult> AddProductImages(ResultProductImagesDto dto)
+        {
+            await _productService.AddProductImages(dto);
+            return Ok();
+        }
+
+        [HttpPut("images")]
+        public async Task<IActionResult> UpdateProductImages(ResultProductImagesDto dto)
+        {
+            await _productService.UpdateProductImages(dto);
+            return Ok();
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {

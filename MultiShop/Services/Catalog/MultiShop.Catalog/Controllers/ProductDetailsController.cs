@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.Catalog.Dtos.ProductDetail;
 using MultiShop.Catalog.Services.Abstract;
+using MultiShop.Catalog.Services.Concrete;
 
 namespace MultiShop.Catalog.Controllers
 {
+    [AllowAnonymous]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductDetailsController : ControllerBase
@@ -27,6 +31,13 @@ namespace MultiShop.Catalog.Controllers
         public async Task<IActionResult> GetById(string id)
         {
             var productDetail = await _productDetailService.GetByIdAsync(id);
+            return Ok(productDetail);
+        }
+
+        [HttpGet("product/{productId}")]
+        public async Task<IActionResult> GetByProductId(string productId)
+        {
+            var productDetail = await _productDetailService.GetByProductIdAsync(productId);
             return Ok(productDetail);
         }
 

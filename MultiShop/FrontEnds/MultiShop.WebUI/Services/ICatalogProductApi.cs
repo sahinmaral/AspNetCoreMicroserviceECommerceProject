@@ -18,5 +18,9 @@ namespace MultiShop.WebUI.Services
         Task UpdateProduct(ResultProductDto model);
         [Get("/products/category/{id}")]
         Task<List<ResultProductDto>> GetProductsByCategoryId(string id);
+        [Post("/products/images")]
+        Task AddProductImages(ResultProductImagesDto model);
+        [Put("/products/images")]
+        Task UpdateProductImages(ResultProductImagesDto model);
     }
 }

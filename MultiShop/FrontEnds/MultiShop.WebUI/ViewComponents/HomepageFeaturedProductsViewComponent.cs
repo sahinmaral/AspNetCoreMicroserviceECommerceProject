@@ -16,8 +16,8 @@ namespace MultiShop.WebUI.ViewComponents
         {
             try
             {
-                var products = await _catalogApi.GetProducts();
-                return View(products);
+                var categories = await _catalogApi.GetProducts();
+                return View(categories);
             }
             catch (Exception ex)
             {

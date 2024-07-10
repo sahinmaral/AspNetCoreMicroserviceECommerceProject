@@ -23,7 +23,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             {
                 var category = await _catalogApi.GetCategoryById(id);
                 var products = await _catalogApi.GetProductsByCategoryId(id);
-                
+
                 return View(new ResultProductsWithCategoryDto
                 {
                     Category = category,
@@ -63,14 +63,14 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                     Value = category.Id
                 });
 
-                return View();
+                return View(new CreateProductDto());
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $"Kategorileri getirirken hata oluştu: {ex.Message}");
                 return View();
             }
-            
+
         }
 
         [HttpPost]
@@ -92,7 +92,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                     Value = category.Id
                 });
                 return View(model);
-            }   
+            }
         }
 
         [HttpPost]
@@ -109,7 +109,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                 ModelState.AddModelError(string.Empty, $"Ürünü silerken hata oluştu: {ex.Message}");
                 return RedirectToAction(nameof(Index));
             }
-            
+
         }
 
         [HttpGet]
@@ -145,9 +145,14 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $"Ürünü güncellerken hata oluştu: {ex.Message}");
+                var categories = await _catalogApi.GetCategories();
+                ViewBag.Categories = categories.Select((category) => new SelectListItem()
+                {
+                    Text = category.Name,
+                    Value = category.Id
+                });
+                return View(model);
             }
-
-            return View(model);
         }
     }
 }

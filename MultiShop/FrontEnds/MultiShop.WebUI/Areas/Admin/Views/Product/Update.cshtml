@@ -15,6 +15,12 @@
         <div class="chart-box">
             <form asp-action="Update" asp-controller="Product" asp-area="Admin" method="post">
                 <input type="hidden" class="form-control" name="id" value="@Model.Id">
+                <div style="display:none;">
+                    @for (int i = 0; i < Model.AdditionalImageUrls.Count; i++)
+                    {
+                        <input type="hidden" name="AdditionalImageUrls[@i]" value="@Model.AdditionalImageUrls[i]" />
+                    }
+                </div>
                 <div class="form-group">
                     <label for="name">Ürün adı</label>
                     <input type="text" class="form-control" id="name" name="name" value="@Model.Name">
@@ -29,8 +35,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="imageUrl">Ürün resmi</label>
-                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" value="@Model.ImageUrl">
+                    <label for="thumbnailImageUrl">Ürün kapak fotoğrafı</label>
+                    <input type="text" class="form-control" id="thumbnailImageUrl" name="thumbnailImageUrl" value="@Model.ThumbnailImageUrl">
                 </div>
                 <div class="form-group">
                     <label for="description">Ürün açıklaması</label>

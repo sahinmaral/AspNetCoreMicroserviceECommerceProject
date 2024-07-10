@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
+using MultiShop.Catalog.Exceptions;
 using MultiShop.Catalog.Services.Abstract;
 using MultiShop.Catalog.Services.Concrete;
 using MultiShop.Catalog.Settings;
@@ -20,7 +21,6 @@ builder.Services.AddOptions<DatabaseSettings>().BindConfiguration(nameof(Databas
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
-builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
 builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
 builder.Services.AddScoped<ICustomerServiceService, CustomerServiceService>();
@@ -49,6 +49,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

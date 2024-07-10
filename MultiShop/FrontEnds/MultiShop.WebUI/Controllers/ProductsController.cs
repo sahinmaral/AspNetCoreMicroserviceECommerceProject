@@ -35,9 +35,18 @@ namespace MultiShop.WebUI.Controllers
         }
 
         [Route("products/{id}")]
-        public IActionResult Detail(string id)
+        public async Task<IActionResult> DetailAsync(string id)
         {
-            return View();
+            try
+            {
+                var product = await _catalogApi.GetProductById(id);
+                return View(product);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Ürünü getirirken hata oluştu: {ex.Message}");
+                return View();
+            }
         }
     }
 }
