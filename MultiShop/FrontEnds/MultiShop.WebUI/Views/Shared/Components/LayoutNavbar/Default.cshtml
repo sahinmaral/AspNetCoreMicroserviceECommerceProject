@@ -23,28 +23,24 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Anasayfa</a>
+                        <a href="@ViewData["HomeUrl"]" class="nav-item nav-link">Anasayfa</a>
                         <a href="/products" class="nav-item nav-link">Ürünler</a>
-                        <a href="detail.html" class="nav-item nav-link">Ürün Detayları</a>
-                        <a href="detail.html" class="nav-item nav-link">Günün Fırsatı</a>
+@*                         <a href="detail.html" class="nav-item nav-link">Günün Fırsatı</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sayfalar <i class="fa fa-angle-down mt-1"></i></a>
                             <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
                                 <a href="cart.html" class="dropdown-item">Sepetim</a>
                                 <a href="checkout.html" class="dropdown-item">Ödeme</a>
                             </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link active">İletişime Geç</a>
+                        </div> *@
+                        <a href="/contact-us" class="nav-item nav-link active">İletişime Geç</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                         <a href="" class="btn px-0">
                             <i class="fa fa-heart text-primary"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                         </a>
-                        <a href="" class="btn px-0 ml-3">
-                            <i class="fa fa-shopping-cart text-primary"></i>
-                            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                        </a>
+                        @await Component.InvokeAsync("LayoutNavbarShoppingCart")
                     </div>
                 </div>
             </nav>

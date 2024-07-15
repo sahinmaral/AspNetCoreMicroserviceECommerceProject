@@ -1,22 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.ViewComponents
 {
     public class HomepageCategoriesViewComponent : ViewComponent
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly ICategoryService _categoryService;
 
-        public HomepageCategoriesViewComponent(ICatalogApi catalogApi)
+        public HomepageCategoriesViewComponent(ICategoryService categoryService)
         {
-            _catalogApi = catalogApi;
+            _categoryService = categoryService;
         }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
             try
             {
-                var categories = await _catalogApi.GetCategories();
+                var categories = await _categoryService.GetAllAsync();
                 return View(categories);
             }
             catch (Exception ex)

@@ -1,25 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.WebUI.Dtos.FeatureSlider;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class FeatureSliderController : Controller
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly IFeatureSliderService _featureSliderService;
 
-        public FeatureSliderController(ICatalogApi catalogApi)
+        public FeatureSliderController(IFeatureSliderService featureSliderService)
         {
-            _catalogApi = catalogApi;
+            _featureSliderService = featureSliderService;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                var featureSliders = await _catalogApi.GetFeatureSliders();
+                var featureSliders = await _featureSliderService.GetAllAsync();
                 return View(featureSliders);
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.CreateFeatureSlider(model);
+                await _featureSliderService.CreateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -57,7 +57,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.DeleteFeatureSlider(id);
+                await _featureSliderService.DeleteAsync(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -74,7 +74,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var featureSlider = await _catalogApi.GetFeatureSliderById(id);
+                var featureSlider = await _featureSliderService.GetByIdAsync(id);
                 return View(featureSlider);
             }
             catch (Exception ex)
@@ -89,7 +89,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.UpdateFeatureSlider(model);
+                await _featureSliderService.UpdateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }

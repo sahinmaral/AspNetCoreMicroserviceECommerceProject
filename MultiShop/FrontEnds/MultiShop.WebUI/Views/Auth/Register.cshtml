@@ -1,0 +1,77 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kayıt olun - MultiShop</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="~/auth-template/css/opensans-font.css">
+	<link rel="stylesheet" type="text/css" href="~/auth-template/fonts/line-awesome/css/line-awesome.min.css">
+	<!-- Jquery -->
+	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+	<!-- Main Style Css -->
+	<link rel="stylesheet" href="~/auth-template/css/style.css" />
+</head>
+<body class="form-v4">
+	<div class="page-content">
+		<div class="form-v4-content">
+			<div class="form-left">
+				<h2>MultiShop E-Ticaret</h2>
+				<p class="text-1">MultiShop projemiz üzerinden e-ticaret işlemlerini gerçekleştirebilmek, indirimli ürünler ve fırsatlardan haberdar olmak adına 1 dakikada kayıt işlemini gerçekleştirin.</p>
+				<div class="form-left-last" style="padding-top:20px;">
+					<a href="/auth/login" class="btn">Hesabınız var mı ? Giriş yapın.</a>
+				</div>
+			</div>
+			<form class="form-detail" asp-action="Register" asp-controller="Auth" method="post" id="myForm">
+				<h2>Kayıt olun</h2>
+				<div class="form-group">
+					<div class="form-row form-row-1">
+						<label for="name">Ad</label>
+						<input type="text" name="name" id="name" class="input-text">
+					</div>
+					<div class="form-row form-row-1">
+						<label for="surname">Soyad</label>
+						<input type="text" name="surname" id="surname" class="input-text">
+					</div>
+				</div>
+				<div class="form-row">
+					<label for="email">E-posta adresi</label>
+					<input type="text" name="email" id="email" class="input-text" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+				</div>
+				<div class="form-row">
+					<label for="userName">Kullanıcı adı</label>
+					<input type="text" name="userName" id="userName" class="input-text">
+				</div>
+				<div class="form-group">
+					<div class="form-row form-row-1 ">
+						<label for="password">Şifre</label>
+						<input type="password" name="password" id="password" class="input-text" required>
+					</div>
+					<div class="form-row form-row-1">
+						<label for="confirmPassword">Şifre Tekrar</label>
+						<input type="password" name="confirmPassword" id="confirmPassword" class="input-text" required>
+					</div>
+				</div>
+				<div class="form-checkbox">
+					<label class="container">
+						<p><a href="#" class="text">Şartları</a> okudum ve kabul ediyorum.</p>
+					  	<input type="checkbox" name="checkbox">
+					  	<span class="checkmark"></span>
+					</label>
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Gönder">
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

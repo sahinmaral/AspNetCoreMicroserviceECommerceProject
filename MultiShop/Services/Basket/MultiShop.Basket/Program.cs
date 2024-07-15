@@ -1,13 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
 
 using MultiShop.Basket.Services.Abstract;
 using MultiShop.Basket.Services.Concrete;
 using MultiShop.Basket.Settings;
-
-using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +23,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.Audience = "ResourceBasket";
 });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("BasketFullPermission", policy =>
+        policy.RequireAssertion(context =>
+            context.User.HasClaim(c => c.Type == "scope" &&
+            (c.Value == "BasketFullPermission")
+            )));
+});
+
 builder.Services.AddOptions<RedisSettings>().BindConfiguration(nameof(RedisSettings));
 builder.Services.AddSingleton(sp =>
 {
@@ -36,14 +41,8 @@ builder.Services.AddSingleton(sp =>
     return redis;
 });
 
-var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+builder.Services.AddControllers();
 
-builder.Services.AddControllers(options =>
-{
-    options.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
-});
-
-JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
 
 builder.Services.AddHttpContextAccessor();
 

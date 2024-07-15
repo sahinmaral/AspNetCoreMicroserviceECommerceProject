@@ -18,6 +18,7 @@
 
 
     @await Component.InvokeAsync("LayoutScripts")
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>

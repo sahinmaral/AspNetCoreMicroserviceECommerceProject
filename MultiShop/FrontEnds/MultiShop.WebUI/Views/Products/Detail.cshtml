@@ -84,23 +84,22 @@
                     </form>
                 </div>
                 <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;">
+@*                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
+                            <a class="btn btn-primary btn-minus" href="/shopping-cart/remove/@Model.Id">
                                 <i class="fa fa-minus"></i>
-                            </button>
+                            </a>
                         </div>
                         <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
+                            <a class="btn btn-primary btn-plus" href="/shopping-cart/add/@Model.Id">
                                 <i class="fa fa-plus"></i>
-                            </button>
+                            </a>
                         </div>
-                    </div>
-                    <button class="btn btn-primary px-3">
-                        <i class="fa fa-shopping-cart mr-1"></i> Add To
-                        Cart
-                    </button>
+                    </div> *@
+                    <a class="btn btn-primary px-3" href="/shopping-cart/add/@Model.Id">
+                        <i class="fa fa-shopping-cart mr-1"></i> Sepete Ekle
+                    </a>
                 </div>
                 <div class="d-flex pt-2">
                     <strong class="text-dark mr-2">Share on:</strong>
@@ -128,15 +127,75 @@
                 <div class="nav nav-tabs mb-4">
                     <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#description-tab">Açıklama</a>
                     <a class="nav-item nav-link text-dark" data-toggle="tab" href="#information-tab">Bilgilendirme</a>
-                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#review-tab">Yorumlar (0)</a>
+                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#review-tab">Yorumlar</a>
                 </div>
                 <div class="tab-content">
                     @await Component.InvokeAsync("ProductDetailDescription", new { productId = Model.Id })
 
-                    @await Component.InvokeAsync("ProductDetailReview")
+                    @await Component.InvokeAsync("ProductDetailReview", new { productId = Model.Id })
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+@section Scripts
+                    {
+    <script>
+        var stars = document.querySelectorAll('.your-rating');
+        let selectedRating = 0;
+
+        Array.from(stars).forEach((star) => {
+            star.addEventListener("mouseover", () => {
+                const index = parseInt(star.id.replace("star", ""));
+                highlightStars(index);
+            });
+
+            star.addEventListener("click", () => {
+                selectedRating = parseInt(star.id.replace("star", ""));
+                highlightStars(selectedRating);
+                selectInput(selectedRating);
+            });
+
+            star.addEventListener("mouseout", () => {
+                if (selectedRating === 0) {
+                    resetStars();
+                } else {
+                    highlightStars(selectedRating);
+                }
+            });
+        });
+
+        function highlightStars(index) {
+            for (let i = 1; i <= 5; i++) {
+                const star = document.querySelector(`#star${i}`);
+                if (i <= index) {
+                    star.classList.remove("fa-star-o");
+                    star.classList.add("fa-star");
+                } else {
+                    star.classList.add("fa-star-o");
+                    star.classList.remove("fa-star");
+                }
+            }
+        }
+
+        function resetStars() {
+            for (let i = 1; i <= 5; i++) {
+                const star = document.querySelector(`#star${i}`);
+                star.classList.add("fa-star-o");
+                star.classList.remove("fa-star");
+            }
+        }
+
+        function selectInput(rating) {
+            for (let i = 1; i <= 5; i++) {
+                const input = document.querySelector(`#star${i}-radio`);
+                if (rating === i) {
+                    input.checked = true
+                } else {
+                    input.checked = false
+                }
+            }
+        }
+    </script>
+}

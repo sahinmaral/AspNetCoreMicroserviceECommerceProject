@@ -1,26 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.WebUI.Dtos.OfferDiscount;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class OfferDiscountController : Controller
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly IOfferDiscountService _offerDiscountService;
 
-        public OfferDiscountController(ICatalogApi catalogApi)
+        public OfferDiscountController(IOfferDiscountService offerDiscountService)
         {
-            _catalogApi = catalogApi;
+            _offerDiscountService = offerDiscountService;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                var specialOffers = await _catalogApi.GetOfferDiscounts();
-                return View(specialOffers);
+                var offerDiscounts = await _offerDiscountService.GetAllAsync();
+                return View(offerDiscounts);
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.CreateOfferDiscount(model);
+                await _offerDiscountService.CreateAsync(model);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -55,7 +55,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.DeleteOfferDiscount(id);
+                await _offerDiscountService.DeleteAsync(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -72,8 +72,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var specialOffer = await _catalogApi.GetOfferDiscountById(id);
-                return View(specialOffer);
+                var offerDiscount = await _offerDiscountService.GetByIdAsync(id);
+                return View(offerDiscount);
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.UpdateOfferDiscount(model);
+                await _offerDiscountService.UpdateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }

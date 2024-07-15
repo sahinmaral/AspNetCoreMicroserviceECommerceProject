@@ -27,9 +27,14 @@ namespace MultiShop.Order.Application.Features.Addresses.Queries.GetAll
                     {
                         Id = address.Id,
                         City = address.City,
-                        Detail = address.Detail,
+                        Detail1 = address.Detail1,
+                        Detail2 = address.Detail2,
                         District = address.District,
-                        UserId = address.UserId
+                        UserId = address.UserId,
+                        Name = address.Name,
+                        Surname = address.Surname,
+                        Email = address.Email,
+                        PhoneNumber = address.PhoneNumber,
                     };
                 }).ToList();
             }

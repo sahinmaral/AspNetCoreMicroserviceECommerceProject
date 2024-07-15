@@ -1,22 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.ViewComponents
 {
     public class HomepageSpecialOfferViewComponent : ViewComponent
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly IOfferDiscountService _offerDiscountService;
 
-        public HomepageSpecialOfferViewComponent(ICatalogApi catalogApi)
+        public HomepageSpecialOfferViewComponent(IOfferDiscountService offerDiscountService)
         {
-            _catalogApi = catalogApi;
+            _offerDiscountService = offerDiscountService;
         }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
             try
             {
-                var offerDiscounts = await _catalogApi.GetOfferDiscounts();
+                var offerDiscounts = await _offerDiscountService.GetAllAsync();
                 return View(offerDiscounts);
             }
             catch (Exception ex)

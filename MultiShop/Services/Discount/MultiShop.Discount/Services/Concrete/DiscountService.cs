@@ -25,7 +25,7 @@ namespace MultiShop.Discount.Services.Concrete
             parameters.Add("@isActive", dto.IsActive);
             parameters.Add("@validDate", dto.ValidDate);
             using var connection = _dbContext.CreateConnection();
-            await connection.ExecuteAsync(query,parameters);
+            await connection.ExecuteAsync(query, parameters);
         }
 
         public async Task DeleteAsync(string id)
@@ -43,6 +43,17 @@ namespace MultiShop.Discount.Services.Concrete
             using var connection = _dbContext.CreateConnection();
             var coupons = await connection.QueryAsync<ResultCouponDto>(query);
             return coupons.ToList();
+        }
+
+        public async Task<GetByCouponIdDto?> GetByCodeAsync(string code)
+        {
+            string query = "SELECT * FROM Coupons WHERE Code=@code";
+            var parameters = new DynamicParameters();
+            parameters.Add("@code", code);
+            using var connection = _dbContext.CreateConnection();
+            var coupon = await connection.QueryFirstOrDefaultAsync<GetByCouponIdDto>(query, parameters);
+            return coupon;
+
         }
 
         public async Task<GetByCouponIdDto?> GetByIdAsync(string id)

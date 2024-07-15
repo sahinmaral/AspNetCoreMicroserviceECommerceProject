@@ -1,0 +1,107 @@
+﻿@model List<ResultCommentDetailedDto>
+
+@{
+    ViewData["Title"] = "Yorumlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    string shortifyContentOfComment(string content)
+    {
+        if (content.Length > 50)
+        {
+            var newContent = content.Substring(0, 50).Concat(" ...");
+            var sb = new StringBuilder();
+            foreach (var c in newContent)
+            {
+                sb.Append(c);
+            }
+            return sb.ToString();
+        }
+        else
+        {
+            return content;
+        }
+    }
+}
+
+<section class="content-header">
+    <h1>Yorum işlemleri</h1>
+</section>
+
+<div class="chart-box">
+    <section class="content-header">
+        <h3>Yorumlar listesi</h3>
+        <p>Yorumlar ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz.</p>
+    </section>
+
+    @if (Model.Count > 0)
+    {
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Ürün adı</th>
+                    <th>Ürüne ait yorum</th>
+                    <th>Durumu</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var comment in Model)
+                {
+                    <tr>
+                        <td>
+                            <p style="padding: 12px 0px;">@comment.Product.Name</p>
+                        </td>
+                        <td>
+                            <p style="padding: 12px 0px;">@shortifyContentOfComment(comment.Content)</p>
+                        </td>
+                        <td>
+                            @if (comment.Status)
+                            {
+                                <p style="text-align:center; padding:5px; cursor:pointer;" class="btn-success">Onaylandı</p>
+                            }
+                            else
+                            {
+                                <p style="text-align:center; padding:5px; cursor:pointer;" class="btn-warning"
+                                   onclick="mouseClickFunctionOfWaitingVerifyComment(event,'@comment.Id','@comment.Status')"
+                                   onmouseover="mouseOverFunctionOfWaitingVerifyComment(event)"
+                                   onmouseout="mouseOutFunctionOfWaitingVerifyComment(event)"
+                                   id="comment-@comment.Id">Onay bekliyor</p>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div role="alert" class="alert alert-info">Herhangi bir yorum bulunmamaktadır.</div>
+    }
+
+</div>
+
+@section Scripts {
+    <script>
+        function mouseOverFunctionOfWaitingVerifyComment(event,commentId) {
+            const commentStatusElement = event.target
+            commentStatusElement.classList.remove("btn-warning")
+            commentStatusElement.classList.add("btn-success")
+            commentStatusElement.innerHTML = "Onaylandı"
+        }
+
+        function mouseOutFunctionOfWaitingVerifyComment(event) {
+            const commentStatusElement = event.target
+            commentStatusElement.classList.add("btn-warning")
+            commentStatusElement.classList.remove("btn-success")
+            commentStatusElement.innerHTML = "Onay bekliyor"
+        }
+
+        function mouseClickFunctionOfWaitingVerifyComment(event, commentId, commentStatus) {
+            if (commentStatus === 'True')
+                event.preventDefault()
+            else {
+                window.location.href = `${window.location.href}/verify/${commentId}`;
+            }
+        }
+    </script>
+}

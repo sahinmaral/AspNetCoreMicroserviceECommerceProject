@@ -6,51 +6,55 @@ using MultiShop.Catalog.Services.Abstract;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [AllowAnonymous]
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OfferDiscountsController : ControllerBase
     {
-        private readonly IOfferDiscountService _specialOfferService;
+        private readonly IOfferDiscountService _offerDiscountService;
 
-        public OfferDiscountsController(IOfferDiscountService specialOfferService)
+        public OfferDiscountsController(IOfferDiscountService offerDiscountService)
         {
-            _specialOfferService = specialOfferService;
+            _offerDiscountService = offerDiscountService;
         }
 
         [HttpGet]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetAll()
         {
-            var categories = await _specialOfferService.GetAllAsync();
-            return Ok(categories);
+            var offerDiscounts = await _offerDiscountService.GetAllAsync();
+            return Ok(offerDiscounts);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetById(string id)
         {
-            var specialOffer = await _specialOfferService.GetByIdAsync(id);
-            return Ok(specialOffer);
+            var offerDiscount = await _offerDiscountService.GetByIdAsync(id);
+            return Ok(offerDiscount);
         }
 
         [HttpPost]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Create(CreateOfferDiscountDto dto)
         {
-            await _specialOfferService.CreateAsync(dto);
+            await _offerDiscountService.CreateAsync(dto);
             return Ok();
         }
 
         [HttpPut]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Update(UpdateOfferDiscountDto dto)
         {
-            await _specialOfferService.UpdateAsync(dto);
+            await _offerDiscountService.UpdateAsync(dto);
             return Ok();
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Delete(string id)
         {
-            await _specialOfferService.DeleteAsync(id);
+            await _offerDiscountService.DeleteAsync(id);
             return Ok();
         }
     }

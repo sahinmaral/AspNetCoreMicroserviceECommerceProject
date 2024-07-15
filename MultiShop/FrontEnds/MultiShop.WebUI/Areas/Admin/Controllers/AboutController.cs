@@ -1,26 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.WebUI.Dtos.About;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class AboutController : Controller
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly IAboutService _aboutService;
 
-        public AboutController(ICatalogApi catalogApi)
+        public AboutController(IAboutService aboutService)
         {
-            _catalogApi = catalogApi;
+            _aboutService = aboutService;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                var brands = await _catalogApi.GetAbouts();
-                return View(brands);
+                var abouts = await _aboutService.GetAllAsync();
+                return View(abouts);
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.CreateAbout(model);
+                await _aboutService.CreateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -57,7 +57,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.DeleteAbout(id);
+                await _aboutService.DeleteAsync(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -74,8 +74,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var category = await _catalogApi.GetAboutById(id);
-                return View(category);
+                var about = await _aboutService.GetByIdAsync(id);
+                return View(about);
             }
             catch (Exception ex)
             {
@@ -89,7 +89,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.UpdateAbout(model);
+                await _aboutService.UpdateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }

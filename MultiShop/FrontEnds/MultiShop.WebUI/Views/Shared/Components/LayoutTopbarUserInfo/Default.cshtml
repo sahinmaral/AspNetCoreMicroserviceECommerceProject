@@ -1,0 +1,22 @@
+﻿@model UserDetailViewModel
+
+@if (Model.Id is null)
+{
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Kullanıcı işlemleri</button>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a href="/auth/login" class="dropdown-item" type="button">Giriş yap</a>
+            <a href="/auth/register" class="dropdown-item" type="button">Kayıt ol</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Hesabım</button>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a href="/user" class="dropdown-item" type="button">Profilim</a>
+            <a href="/user/logout" class="dropdown-item" type="button">Çıkış yap</a>
+        </div>
+    </div>
+}

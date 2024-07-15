@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.WebUI.Dtos.Product;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
+
+using System.Reflection;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductImagesController : Controller
     {
-        private readonly ICatalogApi _catalogApi;
-
-        public ProductImagesController(ICatalogApi catalogApi)
+        private readonly IProductService _productService;
+        public ProductImagesController(IProductService productService)
         {
-            _catalogApi = catalogApi;
+            _productService = productService;
         }
 
         [Route("admin/product/images/{productId}")]
@@ -20,7 +21,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var product = await _catalogApi.GetProductById(productId);
+                var product = await _productService.GetByIdAsync(productId);
                 var productImages = new ResultProductImagesDto
                 {
                     Id = product.Id,
@@ -50,14 +51,14 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var product = await _catalogApi.GetProductById(model.Id);
+                var product = await _productService.GetByIdAsync(model.Id);
                 if(product is null)
                 {
                     ModelState.AddModelError(string.Empty, $"Böyle bir ürün bulunamaktadır.");
                     return View(model);
                 }
 
-                await _catalogApi.AddProductImages(model);
+                await _productService.AddProductImages(model);
                 return RedirectToAction("Index", "Product");
             }
             catch (Exception ex)
@@ -72,7 +73,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var product = await _catalogApi.GetProductById(model.Id);
+                var product = await _productService.GetByIdAsync(model.Id);
                 if (product is null)
                 {
                     ModelState.AddModelError(string.Empty, $"Böyle bir ürün bulunamaktadır.");
@@ -82,7 +83,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                 if (model.AdditionalImageUrls is null)
                     model.AdditionalImageUrls = new List<string>();
 
-                await _catalogApi.UpdateProductImages(model);
+                await _productService.UpdateProductImages(model);
                 return RedirectToAction("Index", "Product");
             }
             catch (Exception ex)

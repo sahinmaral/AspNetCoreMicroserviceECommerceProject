@@ -1,0 +1,34 @@
+//[HttpPost]
+//public async Task<IActionResult> Login(UserLoginDto dto)
+//{
+//	try
+//	{
+//		var signInResponse = await _identityApi.Login(dto);
+//		JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+//		var token = handler.ReadJwtToken(signInResponse.Token);
+//		var claims = token.Claims.ToList();
+
+//		if (signInResponse.Token == null)
+//		{
+//			ModelState.AddModelError(string.Empty, "Giriþ yaparken hata oluþtu");
+//			return View(dto);
+//		}
+
+//		claims.Add(new Claim("multishoptoken", signInResponse.Token));
+//		var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
+//		var authProps = new AuthenticationProperties
+//		{
+//			ExpiresUtc = signInResponse.ExpiredAt,
+//			IsPersistent = true
+//		};
+
+//		await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
+
+//		return RedirectToAction("Index", "Home");
+//	}
+//	catch (Exception ex)
+//	{
+//		ModelState.AddModelError(string.Empty, $"Giriþ yaparken hata oluþtu: {ex.Message}");
+//		return View(dto);
+//	}
+//}

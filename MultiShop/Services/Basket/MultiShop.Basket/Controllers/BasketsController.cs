@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.Basket.Models;
 using MultiShop.Basket.Services.Abstract;
 
 namespace MultiShop.Basket.Controllers
 {
+    [Authorize(Policy = "BasketFullPermission")]
     [Route("api/[controller]")]
     [ApiController]
     public class BasketsController : ControllerBase
@@ -22,6 +24,8 @@ namespace MultiShop.Basket.Controllers
         public async Task<IActionResult> GetBasket()
         {
             var values = await _basketService.GetBasket(_loginService.CurrentUserId);
+            if (values is null)
+                return Ok(new BasketTotalDto());
             return Ok(values);
         }
 

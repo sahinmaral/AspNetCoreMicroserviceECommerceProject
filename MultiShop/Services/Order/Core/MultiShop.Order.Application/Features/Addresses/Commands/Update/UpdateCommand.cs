@@ -9,9 +9,14 @@ namespace MultiShop.Order.Application.Features.Addresses.Commands.Update
     {
         public string Id { get; set; }
         public string UserId { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
         public string District { get; set; }
         public string City { get; set; }
-        public string Detail { get; set; }
+        public string Detail1 { get; set; }
+        public string Detail2 { get; set; }
         public class UpdateCommandHandler : IRequestHandler<UpdateCommand>
         {
             private readonly IRepository<Address> _repository;
@@ -27,9 +32,14 @@ namespace MultiShop.Order.Application.Features.Addresses.Commands.Update
                 {
                     Id = request.Id,
                     City = request.City,
-                    Detail = request.Detail,
+                    Detail1 = request.Detail1,
+                    Detail2 = request.Detail2,
                     District = request.District,
-                    UserId = request.UserId
+                    UserId = request.UserId,
+                    Name = request.Name,
+                    Surname = request.Surname,
+                    Email = request.Email,
+                    PhoneNumber = request.PhoneNumber,
                 });
             }
         }

@@ -1,31 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.WebUI.Dtos.Category;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly ICategoryService _categoryService;
 
-        public CategoryController(ICatalogApi catalogApi)
+        public CategoryController(ICategoryService categoryService)
         {
-            _catalogApi = catalogApi;
+            _categoryService = categoryService;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                var categories = await _catalogApi.GetCategories();
+                var categories = await _categoryService.GetAllAsync();
                 return View(categories);
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $"Kategorileri getirirken hata oluştu: {ex.Message}");
-                return View();
+                return View(new List<ResultCategoryDto>());
             }
         }
 
@@ -40,7 +40,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.CreateCategory(model);
+                await _categoryService.CreateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -57,7 +57,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.DeleteCategory(id);
+                await _categoryService.DeleteAsync(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -74,7 +74,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var category = await _catalogApi.GetCategoryById(id);
+                var category = await _categoryService.GetByIdAsync(id);
                 return View(category);
             }
             catch (Exception ex)
@@ -89,7 +89,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.UpdateCategory(model);
+                await _categoryService.UpdateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }

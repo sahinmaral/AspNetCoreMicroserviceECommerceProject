@@ -27,6 +27,7 @@ builder.Services.AddScoped<ICustomerServiceService, CustomerServiceService>();
 builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
@@ -36,6 +37,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.Authority = builder.Configuration["IdentityServerURL"];
     opt.RequireHttpsMetadata = false;
     opt.Audience = "ResourceCatalog";
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CatalogFullPermission", policy =>
+        policy.RequireAssertion(context =>
+            context.User.HasClaim(c => c.Type == "scope" && c.Value == "CatalogFullPermission")));
+
+    options.AddPolicy("CatalogReadPermission", policy =>
+        policy.RequireAssertion(context =>
+            context.User.HasClaim(c => c.Type == "scope" && (c.Value == "CatalogFullPermission" || c.Value == "CatalogReadPermission"))));
 });
 
 var app = builder.Build();

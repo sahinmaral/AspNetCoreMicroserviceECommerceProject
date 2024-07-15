@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ICatalogApi _catalogApi;
-        public ProductsController(ICatalogApi catalogApi)
+        private readonly IProductService _productService;
+
+        public ProductsController(IProductService productService)
         {
-            _catalogApi = catalogApi;
+            _productService = productService;
         }
 
         public async Task<IActionResult> IndexAsync([FromQuery(Name = "categoryId")] string? categoryId)
@@ -18,12 +18,12 @@ namespace MultiShop.WebUI.Controllers
             {
                 if(categoryId is null)
                 {
-                    var products = await _catalogApi.GetProducts();
+                    var products = await _productService.GetAllAsync();
                     return View(products);
                 }
                 else
                 {
-                    var productsByCategory = await _catalogApi.GetProductsByCategoryId(categoryId);
+                    var productsByCategory = await _productService.GetAllByCategoryId(categoryId);
                     return View(productsByCategory);
                 }
             }
@@ -39,7 +39,7 @@ namespace MultiShop.WebUI.Controllers
         {
             try
             {
-                var product = await _catalogApi.GetProductById(id);
+                var product = await _productService.GetByIdAsync(id);
                 return View(product);
             }
             catch (Exception ex)

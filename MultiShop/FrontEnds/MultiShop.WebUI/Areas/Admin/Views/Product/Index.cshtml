@@ -41,6 +41,9 @@
                                     <a href="#"> <span>Seçenekler</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
                                     <ul class="treeview-menu">
                                         <li>
+                                            <a href="/products/@product.Id"><i class="fa fa-angle-right"></i>Ürünü incele</a>
+                                        </li>
+                                        <li>
                                             <form asp-action="Delete" asp-controller="Product" asp-area="Admin" method="post">
                                                 <input type="hidden" name="id" value="@product.Id" />
                                                 <button type="submit" class="btn btn-link" style="padding:8px 10px; text-decoration:none; color:#787878"><i class="fa fa-angle-right" style="width:10px; margin-right:6px;"></i>Sil</button>

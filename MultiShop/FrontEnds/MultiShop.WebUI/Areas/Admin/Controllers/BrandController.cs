@@ -1,25 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.WebUI.Dtos.Brand;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class BrandController : Controller
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly IBrandService _brandService;
 
-        public BrandController(ICatalogApi catalogApi)
+        public BrandController(IBrandService brandService)
         {
-            _catalogApi = catalogApi;
+            _brandService = brandService;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                var brands = await _catalogApi.GetBrands();
+                var brands = await _brandService.GetAllAsync();
                 return View(brands);
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.CreateBrand(model);
+                await _brandService.CreateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -57,7 +57,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.DeleteBrand(id);
+                await _brandService.DeleteAsync(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -74,8 +74,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var category = await _catalogApi.GetBrandById(id);
-                return View(category);
+                var brand = await _brandService.GetByIdAsync(id);
+                return View(brand);
             }
             catch (Exception ex)
             {
@@ -89,7 +89,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.UpdateBrand(model);
+                await _brandService.UpdateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }

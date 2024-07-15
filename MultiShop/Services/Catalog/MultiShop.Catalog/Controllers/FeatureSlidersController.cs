@@ -6,8 +6,7 @@ using MultiShop.Catalog.Services.Abstract;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [AllowAnonymous]
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FeatureSlidersController : ControllerBase
@@ -20,6 +19,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetAll()
         {
             var featureSliders = await _featureSliderService.GetAllAsync();
@@ -27,6 +27,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetById(string id)
         {
             var featureSlider = await _featureSliderService.GetByIdAsync(id);
@@ -34,6 +35,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Create(CreateFeatureSliderDto dto)
         {
             await _featureSliderService.CreateAsync(dto);
@@ -41,6 +43,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpPut]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Update(UpdateFeatureSliderDto dto)
         {
             await _featureSliderService.UpdateAsync(dto);
@@ -48,6 +51,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Delete(string id)
         {
             await _featureSliderService.DeleteAsync(id);

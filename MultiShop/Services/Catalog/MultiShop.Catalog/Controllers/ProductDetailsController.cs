@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.Catalog.Dtos.ProductDetail;
 using MultiShop.Catalog.Services.Abstract;
-using MultiShop.Catalog.Services.Concrete;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [AllowAnonymous]
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductDetailsController : ControllerBase
@@ -21,13 +19,15 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetAll()
         {
-            var categories = await _productDetailService.GetAllAsync();
-            return Ok(categories);
+            var productDetails = await _productDetailService.GetAllAsync();
+            return Ok(productDetails);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetById(string id)
         {
             var productDetail = await _productDetailService.GetByIdAsync(id);
@@ -35,6 +35,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpGet("product/{productId}")]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetByProductId(string productId)
         {
             var productDetail = await _productDetailService.GetByProductIdAsync(productId);
@@ -42,6 +43,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Create(CreateProductDetailDto dto)
         {
             await _productDetailService.CreateAsync(dto);
@@ -49,6 +51,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpPut]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Update(UpdateProductDetailDto dto)
         {
             await _productDetailService.UpdateAsync(dto);
@@ -56,6 +59,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Delete(string id)
         {
             await _productDetailService.DeleteAsync(id);

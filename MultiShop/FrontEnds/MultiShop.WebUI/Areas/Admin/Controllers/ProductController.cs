@@ -2,18 +2,20 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 using MultiShop.WebUI.Dtos.Product;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductController : Controller
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductController(ICatalogApi catalogApi)
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
-            _catalogApi = catalogApi;
+            _productService = productService;
+            _categoryService = categoryService;
         }
 
         [HttpGet("admin/product/category/{id}")]
@@ -21,8 +23,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var category = await _catalogApi.GetCategoryById(id);
-                var products = await _catalogApi.GetProductsByCategoryId(id);
+                var category = await _categoryService.GetByIdAsync(id);
+                var products = await _productService.GetAllByCategoryId(id);
 
                 return View(new ResultProductsWithCategoryDto
                 {
@@ -41,7 +43,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var products = await _catalogApi.GetProducts();
+                var products = await _productService.GetAllAsync();
                 return View(products);
             }
             catch (Exception ex)
@@ -56,7 +58,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var categories = await _catalogApi.GetCategories();
+                var categories = await _categoryService.GetAllAsync();
                 ViewBag.Categories = categories.Select((category) => new SelectListItem()
                 {
                     Text = category.Name,
@@ -78,14 +80,14 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.CreateProduct(model);
+                await _productService.CreateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $"Ürünü eklerken hata oluştu: {ex.Message}");
-                var categories = await _catalogApi.GetCategories();
+                var categories = await _categoryService.GetAllAsync();
                 ViewBag.Categories = categories.Select((category) => new SelectListItem()
                 {
                     Text = category.Name,
@@ -100,7 +102,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.DeleteProduct(id);
+                await _productService.DeleteAsync(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -117,8 +119,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var product = await _catalogApi.GetProductById(id);
-                var categories = await _catalogApi.GetCategories();
+                var product = await _productService.GetByIdAsync(id);
+                var categories = await _categoryService.GetAllAsync();
                 ViewBag.Categories = categories.Select((category) => new SelectListItem()
                 {
                     Text = category.Name,
@@ -138,14 +140,14 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.UpdateProduct(model);
+                await _productService.UpdateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $"Ürünü güncellerken hata oluştu: {ex.Message}");
-                var categories = await _catalogApi.GetCategories();
+                var categories = await _categoryService.GetAllAsync();
                 ViewBag.Categories = categories.Select((category) => new SelectListItem()
                 {
                     Text = category.Name,

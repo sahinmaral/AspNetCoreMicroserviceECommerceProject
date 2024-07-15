@@ -1,0 +1,51 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Giriş yapın - MultiShop</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="~/auth-template/css/opensans-font.css">
+	<link rel="stylesheet" type="text/css" href="~/auth-template/fonts/line-awesome/css/line-awesome.min.css">
+	<!-- Jquery -->
+	<link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+	<!-- Main Style Css -->
+	<link rel="stylesheet" href="~/auth-template/css/style.css" />
+</head>
+<body class="form-v4">
+	<div class="page-content">
+		<div class="form-v4-content">
+			<div class="form-left">
+				<h2>MultiShop E-Ticaret</h2>
+				<p class="text-1">MultiShop projemiz üzerinden e-ticaret işlemlerini gerçekleştirebilmek, indirimli ürünler ve fırsatlardan haberdar olmak adına hemen oturum açma işlemini gerçekleştirin.</p>
+				<p class="text-2">Alışverişinizi gerçekleştirebilmek, sepetinize ürün eklemek ve ürün listesini görebilmek için oturum açmanız gerekmektedir. Bir hesabınız yoksa aşağıdan kayıt olabilirsiniz.</p>
+				<div class="form-left-last" style="padding-top:20px;">
+					<a href="/auth/register" class="btn">Hesabınız yok mu ? Kayıt olun.</a>
+				</div>
+			</div>
+			<form class="form-detail" asp-action="Login" asp-controller="Auth" method="post" id="myForm">
+				<h2>Giriş yapın</h2>
+				<div class="form-row">
+					<label for="userName">Kullanıcı adı</label>
+					<input type="text" name="userName" id="userName" class="input-text">
+				</div>
+				<div class="form-row">
+					<label for="password">Şifre</label>
+					<input type="password" name="password" id="password" class="input-text" required>
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Gönder">
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

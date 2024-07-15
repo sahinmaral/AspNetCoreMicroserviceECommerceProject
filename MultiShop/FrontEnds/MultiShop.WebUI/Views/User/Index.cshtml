@@ -1,0 +1,20 @@
+﻿@model UserDetailViewModel
+
+@{
+    ViewData["Title"] = "Profilim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container mb-3">
+    <h3>Kullanıcı profil bilgisi</h3>
+    <div class="card">
+        <div class="card-body">
+            <p>Id : @Model.Id</p>
+            <p>Ad :  @Model.Name</p>
+            <p>Soyad :  @Model.Surname</p>
+            <p>E-posta adresi :  @Model.Email</p>
+            <p>Kullanıcı adı : @Model.UserName</p>
+        </div>
+    </div>
+</div>

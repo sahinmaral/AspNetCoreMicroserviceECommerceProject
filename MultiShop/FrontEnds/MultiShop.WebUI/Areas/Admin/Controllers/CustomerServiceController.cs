@@ -1,26 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.WebUI.Dtos.CustomerService;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CustomerServiceController : Controller
     {
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly ICatalogApi _catalogApi;
+        private readonly ICustomerServiceService _customerServiceService;
 
-        public CustomerServiceController(IWebHostEnvironment webHostEnvironment, ICatalogApi catalogApi)
+        public CustomerServiceController(ICustomerServiceService customerServiceService)
         {
-            _webHostEnvironment = webHostEnvironment;
-            _catalogApi = catalogApi;
+            _customerServiceService = customerServiceService;
         }
+
         public async Task<IActionResult> Index()
         {
             try
             {
-                var customerServices = await _catalogApi.GetCustomerServices();
+                var customerServices = await _customerServiceService.GetAllAsync();
                 return View(customerServices);
             }
             catch (Exception ex)
@@ -41,7 +40,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.CreateCustomerService(model);
+                await _customerServiceService.CreateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -58,7 +57,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.DeleteCustomerService(id);
+                await _customerServiceService.DeleteAsync(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -75,7 +74,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var customerService = await _catalogApi.GetCustomerServiceById(id);
+                var customerService = await _customerServiceService.GetByIdAsync(id);
                 return View(customerService);
             }
             catch (Exception ex)
@@ -90,7 +89,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.UpdateCustomerService(model);
+                await _customerServiceService.UpdateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }

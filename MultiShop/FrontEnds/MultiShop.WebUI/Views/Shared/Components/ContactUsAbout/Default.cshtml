@@ -1,0 +1,10 @@
+﻿@model List<ResultAboutDto>
+
+@foreach (var about in Model)
+{
+    <div class="bg-light p-30 mb-3">
+        <p class="mb-2"><i class="fa fa-map-marker text-primary mr-3"></i>@about.Address</p>
+        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>@about.Email</p>
+        <p class="mb-2"><i class="fa fa-phone text-primary mr-3"></i>@about.PhoneNumber</p>
+    </div>
+}

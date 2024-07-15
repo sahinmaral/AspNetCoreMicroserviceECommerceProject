@@ -6,8 +6,7 @@ using MultiShop.Catalog.Services.Abstract;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [AllowAnonymous]
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SpecialOffersController : ControllerBase
@@ -20,13 +19,15 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetAll()
         {
-            var categories = await _specialOfferService.GetAllAsync();
-            return Ok(categories);
+            var specialOffers = await _specialOfferService.GetAllAsync();
+            return Ok(specialOffers);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetById(string id)
         {
             var specialOffer = await _specialOfferService.GetByIdAsync(id);
@@ -34,6 +35,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Create(CreateSpecialOfferDto dto)
         {
             await _specialOfferService.CreateAsync(dto);
@@ -41,6 +43,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpPut]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Update(UpdateSpecialOfferDto dto)
         {
             await _specialOfferService.UpdateAsync(dto);
@@ -48,6 +51,7 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Delete(string id)
         {
             await _specialOfferService.DeleteAsync(id);

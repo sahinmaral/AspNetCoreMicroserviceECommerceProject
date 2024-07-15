@@ -1,22 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.ViewComponents
 {
     public class HomepageCarouselViewComponent : ViewComponent
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly IFeatureSliderService _featureSliderService;
 
-        public HomepageCarouselViewComponent(ICatalogApi catalogApi)
+        public HomepageCarouselViewComponent(IFeatureSliderService featureSliderService)
         {
-            _catalogApi = catalogApi;
+            _featureSliderService = featureSliderService;
         }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
             try
             {
-                var featureSliders = (await _catalogApi.GetFeatureSliders()).Where((featureSlider) => featureSlider.Status).ToList();
+                var featureSliders = (await _featureSliderService.GetAllAsync()).Where((featureSlider) => featureSlider.Status).ToList();
                 return View(featureSliders);
             }
             catch (Exception ex)

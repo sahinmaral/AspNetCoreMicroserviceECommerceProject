@@ -23,11 +23,11 @@ namespace MultiShop.Basket.Services.Concrete
             await _redisService.GetDatabase().StringGetDeleteAsync(userId);
         }
 
-        public async Task<BasketTotalDto> GetBasket(string userId)
+        public async Task<BasketTotalDto?> GetBasket(string userId)
         {
             var existedBasket = await _redisService.GetDatabase().StringGetAsync(userId);
             if (!existedBasket.HasValue)
-                throw new NullReferenceException();
+                return null;
             return JsonSerializer.Deserialize<BasketTotalDto>(existedBasket);
         }
 

@@ -1,25 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.WebUI.Dtos.SpecialOffer;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class SpecialOfferController : Controller
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly ISpecialOfferService _specialOfferService;
 
-        public SpecialOfferController(ICatalogApi catalogApi)
+        public SpecialOfferController(ISpecialOfferService specialOfferService)
         {
-            _catalogApi = catalogApi;
+            _specialOfferService = specialOfferService;
         }
 
         public async Task<IActionResult> Index()
         {
             try
             {
-                var specialOffers = await _catalogApi.GetSpecialOffers();
+                var specialOffers = await _specialOfferService.GetAllAsync();
                 return View(specialOffers);
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.CreateSpecialOffer(model);
+                await _specialOfferService.CreateAsync(model);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -55,7 +55,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.DeleteSpecialOffer(id);
+                await _specialOfferService.DeleteAsync(id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -72,7 +72,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                var specialOffer = await _catalogApi.GetSpecialOfferById(id);
+                var specialOffer = await _specialOfferService.GetByIdAsync(id);
                 return View(specialOffer);
             }
             catch (Exception ex)
@@ -87,7 +87,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             try
             {
-                await _catalogApi.UpdateSpecialOffer(model);
+                await _specialOfferService.UpdateAsync(model);
 
                 return RedirectToAction(nameof(Index));
             }

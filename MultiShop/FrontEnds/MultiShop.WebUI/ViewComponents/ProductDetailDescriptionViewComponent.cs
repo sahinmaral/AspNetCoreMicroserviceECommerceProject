@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using MultiShop.WebUI.Dtos.ProductDetail;
-using MultiShop.WebUI.Services;
-
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 using Refit;
 
 using System.Net;
@@ -11,17 +10,18 @@ namespace MultiShop.WebUI.ViewComponents
 {
     public class ProductDetailDescriptionViewComponent : ViewComponent
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly IProductDetailService _productDetailService;
 
-        public ProductDetailDescriptionViewComponent(ICatalogApi catalogApi)
+        public ProductDetailDescriptionViewComponent(IProductDetailService productDetailService)
         {
-            _catalogApi = catalogApi;
+            _productDetailService = productDetailService;
         }
+
         public async Task<IViewComponentResult> InvokeAsync(string productId)
         {
             try
             {
-                var productDetail = await _catalogApi.GetProductDetailByProductId(productId);
+                var productDetail = await _productDetailService.GetByProductId(productId);
                 return View(productDetail);
             }
             catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.NotFound)

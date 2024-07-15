@@ -4,6 +4,8 @@ using MultiShop.Order.Application.Features.Addresses.Results;
 using MultiShop.Order.Application.Services.Repositories;
 using MultiShop.Order.Domain.Entities.Concrete;
 
+using System.Net;
+
 namespace MultiShop.Order.Application.Features.Addresses.Queries.GetById
 {
     public class GetByIdQuery: IRequest<GetAddressByIdQueryResult>
@@ -29,9 +31,14 @@ namespace MultiShop.Order.Application.Features.Addresses.Queries.GetById
                 {
                     Id = foundAddress.Id,
                     City = foundAddress.City,
-                    Detail = foundAddress.Detail,
+                    Detail1 = foundAddress.Detail1,
+                    Detail2 = foundAddress.Detail2,
                     District = foundAddress.District,
-                    UserId = foundAddress.UserId
+                    UserId = foundAddress.UserId,
+                    Name = foundAddress.Name,
+                    Surname = foundAddress.Surname,
+                    Email = foundAddress.Email,
+                    PhoneNumber = foundAddress.PhoneNumber,
                 };
             }
         }

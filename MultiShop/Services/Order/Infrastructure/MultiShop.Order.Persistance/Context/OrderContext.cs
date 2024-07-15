@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-using MultiShop.Order.Domain.Entities.Abstract;
 using MultiShop.Order.Domain.Entities.Concrete;
 
 namespace MultiShop.Order.Persistance.Context

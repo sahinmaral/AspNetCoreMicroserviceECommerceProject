@@ -1,50 +1,91 @@
-﻿<div class="tab-pane fade" id="review-tab">
+﻿@model ResultCommentsWithProductDto
+
+
+<div class="tab-pane fade" id="review-tab">
     <div class="row">
+        @if (Model.Comments.Count == 0)
+        {
+            <div class="col-md-6">
+                <h6 class="mb-4">@Model.Product.Name ürününe ait herhangi bir yorum yok.</h6>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-6">
+                <h4 class="mb-4">Yorumlar</h4>
+                <div style="overflow-y:auto; height: 1000px">
+                    @foreach (var comment in Model.Comments)
+                    {
+                        <div class="media mb-4">
+                            <img src="@comment.UserImageUrl" alt="userImage" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                            <div class="media-body">
+                                <h6>@comment.UserNameSurname<small> - <i>@comment.CreatedAt.ToShortDateString()</i></small></h6>
+                                <div class="text-primary mb-2">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        if(i <= comment.Rating)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa fa-star-o"></i>
+                                        }
+                                    }
+                                </div>
+                                <p>@comment.Content</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
         <div class="col-md-6">
-            <h4 class="mb-4">1 review for "Product Name"</h4>
-            <div class="media mb-4">
-                <img src="~/template/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                <div class="media-body">
-                    <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
-                    <div class="text-primary mb-2">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <i class="far fa-star"></i>
+            <h4 class="mb-4">Yorum yapın</h4>
+            <small>E-posta adresiniz paylaşılmayacaktır. İlgili alanların doldurulması gerekir. *</small>
+            <form asp-action="Create" asp-controller="Comments" method="post">
+                <input type="hidden" name="productId" value="@Model.Product.Id" />
+
+                <div class="d-flex my-3">
+                    <p class="mb-0 mr-2">Puanınız * :</p>
+                    <div class="d-flex text-primary">
+                        <div>
+                            <input type="radio" name="rating" id="star1-radio" value="1" style="display:none"><i class="fa fa-star-o your-rating mr-1" id="star1"></i>
+                        </div>
+                        <div>
+                            <input type="radio" name="rating" id="star2-radio" value="2" style="display:none"><i class="fa fa-star-o your-rating mr-1" id="star2"></i>
+                        </div>
+                        <div>
+                            <input type="radio" name="rating" id="star3-radio" value="3" style="display:none"><i class="fa fa-star-o your-rating mr-1" id="star3"></i>
+                        </div>
+                        <div>
+                            <input type="radio" name="rating" id="star4-radio" value="4" style="display:none"><i class="fa fa-star-o your-rating mr-1" id="star4"></i>
+                        </div>
+                        <div>
+                            <input type="radio" name="rating" id="star5-radio" value="5" style="display:none"><i class="fa fa-star-o your-rating mr-1" id="star5"></i>
+                        </div>
                     </div>
-                    <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <h4 class="mb-4">Leave a review</h4>
-            <small>Your email address will not be published. Required fields are marked *</small>
-            <div class="d-flex my-3">
-                <p class="mb-0 mr-2">Your Rating * :</p>
-                <div class="text-primary">
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-            </div>
-            <form>
+
                 <div class="form-group">
-                    <label for="message">Your Review *</label>
-                    <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                    <label for="content">Yorumunuz *</label>
+                    <textarea id="content" name="content" cols="30" rows="5" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="name">Your Name *</label>
-                    <input type="text" class="form-control" id="name">
+                    <label for="userNameSurname">Adınız soyadınız *</label>
+                    <input type="text" class="form-control" id="userNameSurname" name="userNameSurname">
                 </div>
                 <div class="form-group">
-                    <label for="email">Your Email *</label>
-                    <input type="email" class="form-control" id="email">
+                    <label for="userEmail">E-posta adresiniz *</label>
+                    <input type="email" class="form-control" id="userEmail" name="userEmail">
+                </div>
+                <div class="form-group">
+                    <label for="userImageUrl">Profil fotoğrafınız *</label>
+                    <input type="text" class="form-control" id="userImageUrl" name="userImageUrl">
                 </div>
                 <div class="form-group mb-0">
-                    <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
+                    <input type="submit" value="Gönder" class="btn btn-primary px-3">
                 </div>
             </form>
         </div>

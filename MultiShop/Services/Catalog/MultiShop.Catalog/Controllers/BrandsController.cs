@@ -6,51 +6,55 @@ using MultiShop.Catalog.Services.Abstract;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [AllowAnonymous]
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BrandsController : ControllerBase
     {
-        private readonly IBrandService _customerServıceService;
+        private readonly IBrandService _brandService;
 
-        public BrandsController(IBrandService customerServıceService)
+        public BrandsController(IBrandService brandService)
         {
-            _customerServıceService = customerServıceService;
+            _brandService = brandService;
         }
 
         [HttpGet]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetAll()
         {
-            var categories = await _customerServıceService.GetAllAsync();
-            return Ok(categories);
+            var brands = await _brandService.GetAllAsync();
+            return Ok(brands);
         }
 
         [HttpGet("{id}")]
+        [Authorize(Policy = "CatalogReadPermission")]
         public async Task<IActionResult> GetById(string id)
         {
-            var customerServıce = await _customerServıceService.GetByIdAsync(id);
-            return Ok(customerServıce);
+            var brand = await _brandService.GetByIdAsync(id);
+            return Ok(brand);
         }
 
         [HttpPost]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Create(CreateBrandDto dto)
         {
-            await _customerServıceService.CreateAsync(dto);
+            await _brandService.CreateAsync(dto);
             return Ok();
         }
 
         [HttpPut]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Update(UpdateBrandDto dto)
         {
-            await _customerServıceService.UpdateAsync(dto);
+            await _brandService.UpdateAsync(dto);
             return Ok();
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "CatalogFullPermission")]
         public async Task<IActionResult> Delete(string id)
         {
-            await _customerServıceService.DeleteAsync(id);
+            await _brandService.DeleteAsync(id);
             return Ok();
         }
     }

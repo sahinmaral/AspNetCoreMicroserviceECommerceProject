@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\views\\shared\\components\\productdetaildescription\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\shared\\components\\productdetaildescription\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\viewcomponents\\productdetaildescriptionviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\viewcomponents\\productdetaildescriptionviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|c:\\users\\sahin\\onedrive\\desktop\\githubrepositories\\aspnetcoremicroserviceecommerceproject\\multishop\\frontends\\multishop.webui\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CE0D283-84F1-4AF0-8325-7E028C5C614A}|FrontEnds\\MultiShop.WebUI\\MultiShop.WebUI.csproj|solutionrelative:frontends\\multishop.webui\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +31,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ProductDetailDescriptionViewComponent.cs",
-              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\ViewComponents\\ProductDetailDescriptionViewComponent.cs",
-              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\ViewComponents\\ProductDetailDescriptionViewComponent.cs",
-              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\ViewComponents\\ProductDetailDescriptionViewComponent.cs",
-              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\ViewComponents\\ProductDetailDescriptionViewComponent.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAMwBsAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T01:37:54.639Z",
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\wwwroot\\css\\site.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-07-15T23:07:33.634Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\ProductDetailDescription\\Default.cshtml",
-              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\ProductDetailDescription\\Default.cshtml",
-              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\ProductDetailDescription\\Default.cshtml",
-              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\Views\\Shared\\Components\\ProductDetailDescription\\Default.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAGAAAA",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
+              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
+              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
+              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\Views\\Payment\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-10T01:37:15.582Z",
+              "WhenOpened": "2024-07-15T22:32:19.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "FrontEnds\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\sahin\\OneDrive\\Desktop\\GithubRepositories\\AspNetCoreMicroserviceECommerceProject\\MultiShop\\FrontEnds\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "FrontEnds\\MultiShop.WebUI\\Controllers\\PaymentController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T22:31:32.319Z",
               "EditorCaption": ""
             }
           ]

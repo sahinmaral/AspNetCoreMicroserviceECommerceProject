@@ -1,22 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 
 namespace MultiShop.WebUI.ViewComponents
 {
     public class LayoutFooterAboutViewComponent: ViewComponent
     {
-        private readonly ICatalogApi _catalogApi;
+        private readonly IAboutService _aboutService;
 
-        public LayoutFooterAboutViewComponent(ICatalogApi catalogApi)
+        public LayoutFooterAboutViewComponent(IAboutService aboutService)
         {
-            _catalogApi = catalogApi;
+            _aboutService = aboutService;
         }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
             try
             {
-                var abouts = await _catalogApi.GetAbouts();
+                var abouts = await _aboutService.GetAllAsync();
                 return View(abouts);
             }
             catch (Exception ex)

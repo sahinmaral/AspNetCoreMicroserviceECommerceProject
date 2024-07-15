@@ -1,0 +1,64 @@
+﻿@model ResultCommentDetailedDto
+
+@{
+    ViewData["Title"] = "Yorumu Onayla";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Yorumu onayla</h3>
+    <p>Varolan yorumu onaylamak için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="UpdateComment" asp-controller="Comment" asp-area="Admin" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="@Model.UserImageUrl" alt="userImage">
+                        </div>
+                        <div class="col-md-9">
+                            <div>
+                                <label>Kullanıcının adı soyadı: </label>
+                                <p>@Model.UserNameSurname</p>
+                            </div>
+                            <div>
+                                <label>Kullanıcının e-posta adresi: </label>
+                                <p>@Model.UserEmail</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="content">İçerik</label>
+                    <textarea class="form-control" id="content" rows="5" name="content">@Model.Content</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="status">Durum</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="status" id="status1" value="false" @(Model.Status == false ? "checked" : "")>
+                            Onaylanmadı
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="status" id="status2" value="true" @(Model.Status == true ? "checked" : "")>
+                            Onaylandı
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default">Onayla</button>
+            </form>
+            <form asp-action="Delete" asp-controller="Comment" asp-area="Admin" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button type="submit" class="btn btn-danger" style="margin-top:5px">Yorumu Sil</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
