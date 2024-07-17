@@ -1,0 +1,26 @@
+﻿@model ResultCargoCompanyDto
+
+@{
+    ViewData["Title"] = "Kargo şirketi güncelleme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h3>Kargo şirketi güncelleme</h3>
+    <p>Varolan kargo şirketini güncellemek için aşağıdaki formda yer alan bütün alanları doldurmanız gerekir.</p>
+</section>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <form asp-action="CreateCargoCompany" asp-controller="Cargo" asp-area="Admin" method="post">
+                <input type="hidden" class="form-control" name="id" value="@Model.Id">
+                <div class="form-group">
+                    <label for="name">Adı</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <button type="submit" class="btn btn-default">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model ResultCargoCustomerWithUserDetailDto
+
+@{
+    ViewData["Title"] = $"{Model.UserDetail.Name} {Model.UserDetail.Surname} Adlı Kullanıcının Adres Detayı";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container mb-3">
+    <h3>@Model.UserDetail.Name @Model.UserDetail.Surname adlı kullanıcının adres detayı</h3>
+    <div class="card">
+        <div class="card-body">
+            <p>Ad Soyad:  @Model.UserDetail.Name @Model.UserDetail.Surname</p>
+            <p>Kullanıcı adı : @Model.UserDetail.UserName</p>
+            <p>İl :  @Model.CargoCustomer.City</p>
+            <p>İlçe :  @Model.CargoCustomer.District</p>
+            <p>Açık Adres :  @Model.CargoCustomer.Address</p>
+        </div>
+    </div>
+</div>

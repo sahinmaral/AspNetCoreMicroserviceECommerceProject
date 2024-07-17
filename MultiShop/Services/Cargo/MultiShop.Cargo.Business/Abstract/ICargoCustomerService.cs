@@ -4,6 +4,6 @@ namespace MultiShop.Cargo.Business.Abstract
 {
     public interface ICargoCustomerService : IGenericService<CargoCustomer>
     {
-
+        Task<CargoCustomer?> GetByUserId(string userId);
     }
 }

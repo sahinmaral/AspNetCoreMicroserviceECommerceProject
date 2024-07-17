@@ -15,6 +15,14 @@ namespace MultiShop.Discount.Services.Concrete
             _dbContext = dbContext;
         }
 
+        public async Task<int> CountAsync()
+        {
+            string query = "SELECT COUNT(*) FROM Coupons";
+            using var connection = _dbContext.CreateConnection();
+            var values = await connection.QueryAsync<int>(query);
+            return values.First();
+        }
+
         public async Task CreateAsync(CreateCouponDto dto)
         {
             string query = $"INSERT INTO Coupons (Id,Code,Rate,IsActive,ValidDate) VALUES (@id,@code,@rate,@isActive,@validDate)";

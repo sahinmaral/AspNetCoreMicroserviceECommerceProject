@@ -17,6 +17,11 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Discount.Services.Concret
             _discountApiResourceOwnerPasswordDiscountApi = RestService.For<IDiscountApi>(clientFactory.CreateClient("ResourceOwnerPasswordDiscountApi"));
         }
 
+        public Task<int> Count()
+        {
+            return _discountApiClientCredential.Count();
+        }
+
         public async Task<GetCouponByCodeDto> GetCouponByCode(string code)
         {
             return await _discountApiClientCredential.GetCouponByCode(code);

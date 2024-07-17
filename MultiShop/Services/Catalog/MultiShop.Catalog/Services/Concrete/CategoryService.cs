@@ -30,6 +30,12 @@ namespace MultiShop.Catalog.Services.Concrete
             await _collection.DeleteOneAsync(category => category.Id == id);
         }
 
+        public async Task<int> CountAsync()
+        {
+            var count = await _collection.CountDocumentsAsync(FilterDefinition<Category>.Empty);
+            return Convert.ToInt16(count);
+        }
+
         public async Task<List<ResultCategoryDto>> GetAllAsync()
         {
             var categories = await _collection.Find(category => true).ToListAsync();

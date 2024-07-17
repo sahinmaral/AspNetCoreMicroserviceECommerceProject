@@ -57,5 +57,13 @@ namespace MultiShop.Catalog.Controllers
             await _categoryService.DeleteAsync(id);
             return Ok();
         }
+
+        [HttpGet("count")]
+        [Authorize(Policy = "CatalogReadPermission")]
+        public async Task<IActionResult> Count()
+        {
+            var count = await _categoryService.CountAsync();
+            return Ok(count);
+        }
     }
 }

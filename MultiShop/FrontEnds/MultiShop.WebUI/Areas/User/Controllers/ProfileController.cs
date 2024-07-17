@@ -1,17 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+
 using MultiShop.WebUI.Services.Authentication.Services.Abstract;
 
-namespace MultiShop.WebUI.Controllers
+namespace MultiShop.WebUI.Areas.User.Controllers
 {
-    public class UserController : Controller
+    [Area("User")]
+    public class ProfileController : Controller
     {
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService)
+        public ProfileController(IUserService userService)
         {
             _userService = userService;
         }
 
+        [HttpGet("/user/my-profile")]
         public async Task<IActionResult> Index()
         {
             var currentUserInfo = await _userService.GetUserInfo();

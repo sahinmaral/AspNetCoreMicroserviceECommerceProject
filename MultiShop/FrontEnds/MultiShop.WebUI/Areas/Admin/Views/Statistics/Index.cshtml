@@ -1,0 +1,113 @@
+﻿@model StatisticResultDto
+
+@{
+    ViewData["Title"] = "İstatistikler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Toplam Kategori Sayısı</h5>
+                <h3>@Model.CategoryCount</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box bg-sea">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Toplam Ürün Sayısı</h5>
+                <h3>@Model.ProductCount</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box bg-blue">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Toplam Marka Sayısı</h5>
+                <h3>@Model.BrandCount</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box bg-green">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Toplam Kullanıcı Sayısı</h5>
+                <h3>@Model.UserCount</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Toplam İndirim Sayısı</h5>
+                <h3>@Model.DiscountCount</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box bg-sea">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Toplam Yorum Sayısı</h5>
+                <h3>@Model.TotalCommentCount</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box bg-green">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Toplam Aktif Yorum Sayısı</h5>
+                <h3>@Model.ApprovedCommentCount</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box bg-blue">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Toplam Onaylanmamış Yorum Sayısı</h5>
+                <h3>@Model.NotApprovedCommentCount</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-xs-12">
+        <div class="media-box">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Ortalama Ürün Fiyatı</h5>
+                <h3>@Model.ProductAvgPrice.ToString("C2")</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xs-12">
+        <div class="media-box bg-green">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>En Pahalı Ürün</h5>
+                <h3>@Model.MostExpensiveProduct.Name @Model.MostExpensiveProduct.Price.ToString("C2")</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xs-12">
+        <div class="media-box bg-blue">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>En Ucuz Ürün Fiyatı</h5>
+                <h3>@Model.MostCheapProduct.Name @Model.MostCheapProduct.Price.ToString("C2")</h3>
+            </div>
+        </div>
+    </div>
+</div>
+

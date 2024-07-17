@@ -25,15 +25,22 @@ namespace MultiShop.Cargo.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var categories = await _cargoCustomerService.GetAllAsync();
-            return Ok(categories);
+            var cargoCustomers = await _cargoCustomerService.GetAllAsync();
+            return Ok(_mapper.Map<List<ResultCargoCustomerDto>>(cargoCustomers));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
-            var discount = await _cargoCustomerService.GetByIdAsync(id);
-            return Ok(discount);
+            var cargoCustomer = await _cargoCustomerService.GetByIdAsync(id);
+            return Ok(_mapper.Map<ResultCargoCustomerDto>(cargoCustomer));
+        }
+
+        [HttpGet("user/{id}")]
+        public async Task<IActionResult> GetByUserId(string userId)
+        {
+            var cargoCustomer = await _cargoCustomerService.GetByUserId(userId);
+            return Ok(_mapper.Map<ResultCargoCustomerDto>(cargoCustomer));
         }
 
         [HttpPost]

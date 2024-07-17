@@ -40,6 +40,22 @@ namespace MultiShop.Comment.Controllers
             return Ok(_mapper.Map<ResultUserCommentDto>(comment));
         }
 
+        [HttpGet("countByStatus")]
+        [Authorize(Policy = "CommentReadPermission")]
+        public async Task<IActionResult> GetCommentCountByStatus([FromQuery] bool status)
+        {
+            var count = await _commentContext.UserComments.CountAsync(x => x.Status == status);
+            return Ok(count);
+        }
+
+        [HttpGet("countTotal")]
+        [Authorize(Policy = "CommentReadPermission")]
+        public async Task<IActionResult> GetTotalCountOfComment()
+        {
+            var count = await _commentContext.UserComments.CountAsync();
+            return Ok(count);
+        }
+
         [HttpGet("product/{productId}")]
         [Authorize(Policy = "CommentReadPermission")]
         public async Task<IActionResult> GetByProductId(string productId, [FromQuery] bool status = true)

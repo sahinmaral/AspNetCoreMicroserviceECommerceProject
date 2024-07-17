@@ -2,7 +2,6 @@
 
 using MultiShop.WebUI.Dtos.Comment;
 using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
-using MultiShop.WebUI.Services.ExternalApiServices.Comment;
 
 namespace MultiShop.WebUI.ViewComponents
 {

@@ -21,5 +21,13 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract
         Task AddProductImages(ResultProductImagesDto model);
         [Put("/products/images")]
         Task UpdateProductImages(ResultProductImagesDto model);
+        [Get("/products/count")]
+        Task<int> CountOfProducts();
+        [Get("/products/averagePrice")]
+        Task<decimal> AveragePriceOfProducts();
+        [Get("/products/mostCheap")]
+        Task<ResultProductDto> MostCheapProduct();
+        [Get("/products/mostExpensive")]
+        Task<ResultProductDto> MostExpensiveProduct();
     }
 }

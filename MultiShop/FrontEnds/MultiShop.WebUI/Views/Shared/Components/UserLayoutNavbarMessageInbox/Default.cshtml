@@ -1,0 +1,33 @@
+﻿@model List<ResultInboxMessageDto>
+
+@{
+    string shortifyContent(string content)
+    {
+        return content.Length > 50 ? content.Substring(0, 50) + " ..." : content;
+    }
+}
+
+<ul class="navbar-nav navbar-nav-right">
+    <li class="nav-item dropdown mr-1">
+        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
+            <i class="mdi mdi-calendar mx-0"></i>
+            <span class="count bg-info">2</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+            <p class="mb-0 font-weight-normal float-left dropdown-header">Mesajlar</p>
+            @foreach(var message in Model)
+            {
+                <a class="dropdown-item preview-item">
+                    <div class="preview-item-content flex-grow">
+                        <h6 class="preview-subject ellipsis font-weight-normal">
+                            @message.Sender.Name @message.Sender.Surname
+                        </h6>
+                        <p class="font-weight-light small-text text-muted mb-0">
+                            @shortifyContent(message.Subject)
+                        </p>
+                    </div>
+                </a>
+            }
+        </div>
+    </li>
+</ul>

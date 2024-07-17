@@ -5,6 +5,10 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Comment.Abstract
 {
     public interface ICommentApi
     {
+        [Get("/comments/countByStatus")]
+        Task<int> GetCommentCountByStatus([Query] bool status);
+        [Get("/comments/countTotal")]
+        Task<int> GetTotalCountOfComment();
         [Post("/comments")]
         Task CreateComment(CreateUserCommentDto dto);
         [Get("/comments/product/{productId}")]

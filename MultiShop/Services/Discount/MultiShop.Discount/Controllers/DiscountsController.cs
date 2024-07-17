@@ -21,8 +21,8 @@ namespace MultiShop.Discount.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var categories = await _discountService.GetAllAsync();
-            return Ok(categories);
+            var discounts = await _discountService.GetAllAsync();
+            return Ok(discounts);
         }
 
         [HttpGet("{id}")]
@@ -30,6 +30,13 @@ namespace MultiShop.Discount.Controllers
         {
             var discount = await _discountService.GetByIdAsync(id);
             return Ok(discount);
+        }
+
+        [HttpGet("count")]
+        public async Task<IActionResult> Count()
+        {
+            var count = await _discountService.CountAsync();
+            return Ok(count);
         }
 
         [HttpGet("code/{code}")]

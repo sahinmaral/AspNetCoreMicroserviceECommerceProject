@@ -9,5 +9,6 @@ namespace MultiShop.Catalog.Services.Abstract
         Task UpdateAsync(UpdateBrandDto dto);
         Task DeleteAsync(string id);
         Task<GetByBrandIdDto> GetByIdAsync(string id);
+        Task<int> CountAsync();
     }
 }

@@ -7,5 +7,7 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Discount.Abstract
     {
         [Get("/discounts/code/{code}")]
         Task<GetCouponByCodeDto> GetCouponByCode(string code);
+        [Get("/discounts/count")]
+        Task<int> Count();
     }
 }

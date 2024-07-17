@@ -42,6 +42,11 @@ namespace MultiShop.Cargo.Business.Concrete
             return await _cargoCustomerDal.GetByIdAsync(id);
         }
 
+        public async Task<CargoCustomer?> GetByUserId(string userId)
+        {
+            return await _cargoCustomerDal.GetByUserId(userId);
+        }
+
         public async Task<CargoCustomer> UpdateAsync(CargoCustomer entity)
         {
             return await _cargoCustomerDal.UpdateAsync(entity);

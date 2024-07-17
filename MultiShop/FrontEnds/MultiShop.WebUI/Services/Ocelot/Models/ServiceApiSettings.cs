@@ -12,6 +12,7 @@
         public IndividualServiceApi Basket { get; set; }
         public IndividualServiceApi Payment { get; set; }
         public IndividualServiceApi Comment { get; set; }
+        public IndividualServiceApi Message { get; set; }
     }
 
     public class IndividualServiceApi

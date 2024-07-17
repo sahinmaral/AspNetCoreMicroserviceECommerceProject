@@ -12,5 +12,9 @@ namespace MultiShop.Catalog.Services.Abstract
         Task<List<ResultProductDto>> GetAllByCategoryIdAsync(string categoryId);
         Task AddProductImages(ResultProductImagesDto dto);
         Task UpdateProductImages(ResultProductImagesDto dto);
+        Task<int> CountAsync();
+        Task<decimal> AveragePriceAsync();
+        Task<ResultProductDto> MostExpensiveProduct();
+        Task<ResultProductDto> MostCheapProduct();
     }
 }

@@ -81,5 +81,37 @@ namespace MultiShop.Catalog.Controllers
             await _productService.DeleteAsync(id);
             return Ok();
         }
+
+        [HttpGet("count")]
+        [Authorize(Policy = "CatalogReadPermission")]
+        public async Task<IActionResult> Count()
+        {
+            var count = await _productService.CountAsync();
+            return Ok(count);
+        }
+
+        [HttpGet("averagePrice")]
+        [Authorize(Policy = "CatalogReadPermission")]
+        public async Task<IActionResult> AveragePrice()
+        {
+            var averagePrice = await _productService.AveragePriceAsync();
+            return Ok(averagePrice);
+        }
+
+        [HttpGet("mostExpensive")]
+        [Authorize(Policy = "CatalogReadPermission")]
+        public async Task<IActionResult> MostExpensiveProduct()
+        {
+            var product = await _productService.MostExpensiveProduct();
+            return Ok(product);
+        }
+
+        [HttpGet("mostCheap")]
+        [Authorize(Policy = "CatalogReadPermission")]
+        public async Task<IActionResult> MostCheapProduct()
+        {
+            var product = await _productService.MostCheapProduct();
+            return Ok(product);
+        }
     }
 }

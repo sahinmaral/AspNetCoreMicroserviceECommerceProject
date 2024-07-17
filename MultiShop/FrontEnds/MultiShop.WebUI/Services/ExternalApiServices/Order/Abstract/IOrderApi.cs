@@ -1,11 +1,6 @@
-﻿using MultiShop.WebUI.Dtos.Order;
-using Refit;
-
-namespace MultiShop.WebUI.Services.ExternalApiServices.Order.Abstract
+﻿namespace MultiShop.WebUI.Services.ExternalApiServices.Order.Abstract
 {
-    public interface IOrderApi
+    public interface IOrderApi: IOrderAddressApi, IOrderOrderingApi
     {
-        [Post("/addresses")]
-        Task CreateAsync(CreateAddressDto dto);
     }
 }

@@ -7,6 +7,8 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract
     {
         [Get("/categories")]
         Task<List<ResultCategoryDto>> GetCategories();
+        [Get("/categories/count")]
+        Task<int> GetCount();
 
         [Post("/categories")]
         Task CreateCategory(CreateCategoryDto category);

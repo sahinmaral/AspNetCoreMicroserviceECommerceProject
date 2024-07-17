@@ -11,9 +11,11 @@ namespace MultiShop.Cargo.Dto.Mappings
         {
             CreateMap<CargoCustomer, CreateCargoCustomerDto>().ReverseMap();
             CreateMap<CargoCustomer, UpdateCargoCustomerDto>().ReverseMap();
+            CreateMap<CargoCustomer, ResultCargoCustomerDto>().ReverseMap();
 
             CreateMap<CargoCompany, CreateCargoCompanyDto>().ReverseMap();
             CreateMap<CargoCompany, UpdateCargoCompanyDto>().ReverseMap();
+            CreateMap<CargoCompany, ResultCargoCompanyDto>().ReverseMap();
 
             CreateMap<CargoDetail, CreateCargoDetailDto>().ReverseMap();
             CreateMap<CargoDetail, UpdateCargoDetailDto>().ReverseMap();

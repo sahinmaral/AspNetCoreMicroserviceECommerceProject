@@ -14,7 +14,7 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Order.Concrete
 
         public async Task CreateAsync(CreateAddressDto dto)
         {
-            await _orderApi.CreateAsync(dto);
+            await _orderApi.CreateAddress(dto);
         }
     }
 }

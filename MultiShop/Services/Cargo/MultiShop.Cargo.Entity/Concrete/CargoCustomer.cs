@@ -4,6 +4,7 @@ namespace MultiShop.Cargo.Entity.Concrete
 {
     public class CargoCustomer : BaseEntity
     {
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string PhoneNumber { get; set; }

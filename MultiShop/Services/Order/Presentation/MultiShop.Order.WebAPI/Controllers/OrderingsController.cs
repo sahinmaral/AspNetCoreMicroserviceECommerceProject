@@ -7,6 +7,7 @@ using MultiShop.Order.Application.Features.Orderings.Commands.Create;
 using MultiShop.Order.Application.Features.Orderings.Commands.Delete;
 using MultiShop.Order.Application.Features.Orderings.Commands.Update;
 using MultiShop.Order.Application.Features.Orderings.Queries.GetAll;
+using MultiShop.Order.Application.Features.Orderings.Queries.GetAllByUserId;
 using MultiShop.Order.Application.Features.Orderings.Queries.GetById;
 
 namespace MultiShop.Order.WebAPI.Controllers
@@ -26,18 +27,28 @@ namespace MultiShop.Order.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var addresses = await _mediator.Send(new GetAllQuery());
-            return Ok(addresses);
+            var orderings = await _mediator.Send(new GetAllQuery());
+            return Ok(orderings);
+        }
+
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetAllByUserId(string userId)
+        {
+            var orderings = await _mediator.Send(new GetAllByUserIdQuery
+            {
+                UserId = userId
+            });
+            return Ok(orderings);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
-            var address = await _mediator.Send(new GetByIdQuery()
+            var order = await _mediator.Send(new GetByIdQuery()
             {
                 Id = id
             });
-            return Ok(address);
+            return Ok(order);
         }
 
         [HttpPost]

@@ -8,6 +8,8 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract
     {
         [Get("/brands")]
         Task<List<ResultBrandDto>> GetBrands();
+        [Get("/brands/count")]
+        Task<int> GetCount();
         [Put("/brands")]
         Task UpdateBrand(ResultBrandDto model);
         [Get("/brands/{id}")]

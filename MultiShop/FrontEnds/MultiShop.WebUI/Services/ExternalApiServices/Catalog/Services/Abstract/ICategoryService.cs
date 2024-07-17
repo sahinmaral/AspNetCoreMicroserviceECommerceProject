@@ -9,5 +9,7 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract
         Task UpdateAsync(ResultCategoryDto dto);
         Task DeleteAsync(string id);
         Task<ResultCategoryDto> GetByIdAsync(string id);
+        Task<int> CountAsync();
+        Task<decimal> AveragePriceAsync();
     }
 }

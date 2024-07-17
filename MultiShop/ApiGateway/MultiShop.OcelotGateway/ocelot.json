@@ -15,7 +15,7 @@
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotAuthenticationScheme",
-        "AllowedScopes": [ "CatalogFullPermission","CatalogReadPermission" ]
+        "AllowedScopes": [ "CatalogFullPermission", "CatalogReadPermission" ]
       }
     },
     {
@@ -108,7 +108,6 @@
         "AllowedScopes": [ "CommentReadPermission", "CommentFullPermission" ]
       }
     },
-
     {
       //Payment Mikroservis
       "DownstreamPathTemplate": "/api/{everything}",
@@ -142,7 +141,25 @@
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotAuthenticationScheme",
-        "AllowedScopes": ["ImageStorageFullPermission"]
+        "AllowedScopes": [ "ImageStorageFullPermission" ]
+      }
+    },
+    {
+      //Message Mikroservis
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7078
+        }
+      ],
+      "UpstreamPathTemplate": "/services/message/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamScheme": "http",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+        "AllowedScopes": [ "MessageFullPermission" ]
       }
     }
   ],

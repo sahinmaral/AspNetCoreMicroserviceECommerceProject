@@ -5,5 +5,6 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Discount.Services.Abstrac
     public interface IDiscountService
     {
         Task<GetCouponByCodeDto?> GetCouponByCode(string code);
+        Task<int> Count();
     }
 }

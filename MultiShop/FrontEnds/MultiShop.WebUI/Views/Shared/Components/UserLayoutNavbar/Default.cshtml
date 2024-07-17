@@ -1,0 +1,20 @@
+﻿@model UserDetailViewModel
+
+<!-- partial:./partials/_navbar.html -->
+<nav class="navbar col-lg-12 col-12 px-0 py-0 py-lg-4 d-flex flex-row">
+    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+        </button>
+        <div class="navbar-brand-wrapper ml-4">
+            <span class="h1 text-uppercase px-2" style="color: #FFD333; background-color: #3D464D">Multi</span>
+            <span class="h1 text-uppercase px-2 ml-n1" style="background-color: #FFD333; color: #3D464D">Shop</span>
+        </div>
+        <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1 ml-4">Merhabalar, @Model.Name @Model.Surname</h4>
+        @await Component.InvokeAsync("UserLayoutNavbarMessageInbox")
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+        </button>
+    </div>
+</nav>
+<!-- partial -->

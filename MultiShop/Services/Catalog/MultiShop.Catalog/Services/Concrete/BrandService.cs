@@ -19,6 +19,12 @@ namespace MultiShop.Catalog.Services.Concrete
             _collection = _database.GetCollection<Brand>(_databaseSettings.BrandCollectionName);
         }
 
+        public async Task<int> CountAsync()
+        {
+            var count = await _collection.CountDocumentsAsync(FilterDefinition<Brand>.Empty);
+            return Convert.ToInt16(count);
+        }
+
         public async Task CreateAsync(CreateBrandDto dto)
         {
             var category = _mapper.Map<Brand>(dto);

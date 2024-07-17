@@ -18,6 +18,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Areas\Admin\Views\Cargo\GetAllCargoCompanies.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Cargo\UpdateCargoCompany.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\User\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Update="wwwroot\admin-template\dist\img\logo-transparent.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -36,6 +48,14 @@
     <Content Update="wwwroot\lib\images\xaomi_redmi_9c.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Admin\Views\Cargo\CreateCargoCompany.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Cargo\CreateCargoCompany.cshtml" />
   </ItemGroup>
 
 </Project>

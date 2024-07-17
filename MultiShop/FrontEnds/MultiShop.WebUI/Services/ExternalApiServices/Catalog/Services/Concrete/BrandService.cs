@@ -36,5 +36,10 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Concrete
         {
             await _catalogApiResourceOwnerPasswordCatalogApi.UpdateBrand(dto);
         }
+
+        public async Task<int> CountAsync()
+        {
+            return await _catalogApiClientCredential.CountOfProducts();
+        }
     }
 }

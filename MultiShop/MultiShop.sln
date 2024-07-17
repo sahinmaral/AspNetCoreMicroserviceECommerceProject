@@ -71,11 +71,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.OcelotGateway", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{504877DA-67DB-4A05-AFC4-2AFC5DED90DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Payment", "Services\Payment\MultiShop.Payment\MultiShop.Payment.csproj", "{64B1BFED-2088-4C87-B0FC-D290BA6F9E1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Payment", "Services\Payment\MultiShop.Payment\MultiShop.Payment.csproj", "{64B1BFED-2088-4C87-B0FC-D290BA6F9E1F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageStorage", "ImageStorage", "{22570D6B-4CF8-4A88-A547-CF4B0B8A7ACE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.ImageStorage", "Services\ImageStorage\MultiShop.ImageStorage\MultiShop.ImageStorage.csproj", "{2B61D78D-69B9-4659-8CC7-2836752FCDAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.ImageStorage", "Services\ImageStorage\MultiShop.ImageStorage\MultiShop.ImageStorage.csproj", "{2B61D78D-69B9-4659-8CC7-2836752FCDAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Message", "Message", "{FF712303-22B0-4424-8344-516711174FBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message", "Services\MultiShop.Message\MultiShop.Message.csproj", "{A8DD21F7-637C-4BCC-95A2-840796819F81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -155,6 +159,10 @@ Global
 		{2B61D78D-69B9-4659-8CC7-2836752FCDAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B61D78D-69B9-4659-8CC7-2836752FCDAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B61D78D-69B9-4659-8CC7-2836752FCDAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8DD21F7-637C-4BCC-95A2-840796819F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8DD21F7-637C-4BCC-95A2-840796819F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8DD21F7-637C-4BCC-95A2-840796819F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8DD21F7-637C-4BCC-95A2-840796819F81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,6 +197,8 @@ Global
 		{64B1BFED-2088-4C87-B0FC-D290BA6F9E1F} = {504877DA-67DB-4A05-AFC4-2AFC5DED90DE}
 		{22570D6B-4CF8-4A88-A547-CF4B0B8A7ACE} = {A14840A1-017C-4825-80E0-6C3FE86BBCCD}
 		{2B61D78D-69B9-4659-8CC7-2836752FCDAB} = {22570D6B-4CF8-4A88-A547-CF4B0B8A7ACE}
+		{FF712303-22B0-4424-8344-516711174FBE} = {A14840A1-017C-4825-80E0-6C3FE86BBCCD}
+		{A8DD21F7-637C-4BCC-95A2-840796819F81} = {FF712303-22B0-4424-8344-516711174FBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B2912DB-4A52-4B19-869B-A9AB6B624CF9}

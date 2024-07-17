@@ -4,6 +4,7 @@ using AutoMapper;
 
 using Microsoft.Extensions.Options;
 
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 using MultiShop.Catalog.Dtos.Product;
@@ -105,6 +106,93 @@ namespace MultiShop.Catalog.Services.Concrete
             productEntity.AdditionalImageUrls = dto.AdditionalImageUrls;
             var product = _mapper.Map<UpdateProductDto>(productEntity);
             await UpdateAsync(product);
+        }
+
+        public async Task<int> CountAsync()
+        {
+            var count = await _collection.CountDocumentsAsync(FilterDefinition<Product>.Empty);
+            return Convert.ToInt16(count);
+        }
+
+        public async Task<decimal> AveragePriceAsync()
+        {
+            var pipeline = new BsonDocument[]
+            {
+                new BsonDocument("$match", new BsonDocument
+                {
+                    { "Price", new BsonDocument { { "$type", "string" } } }
+                }),
+                new BsonDocument("$group", new BsonDocument
+                {
+                    { "_id", BsonNull.Value },
+                    { "averagePrice", new BsonDocument
+                        {
+                            { "$avg", new BsonDocument
+                                {
+                                    { "$toDouble", "$Price" }
+                                }
+                            }
+                        }
+                    }
+                })
+            };
+
+            var result = await _collection.Aggregate<BsonDocument>(pipeline).FirstOrDefaultAsync();
+
+            if (result == null || result["averagePrice"].IsBsonNull)
+            {
+                return 0;
+            }
+
+            return (decimal)result["averagePrice"].AsDouble;
+        }
+
+        public async Task<ResultProductDto> MostExpensiveProduct()
+        {
+            var pipeline = new BsonDocument[]
+            {
+                new BsonDocument("$addFields", new BsonDocument
+                {
+                    { "numericPrice", new BsonDocument("$toDouble", "$Price") }
+                }),
+                new BsonDocument("$sort", new BsonDocument
+                {
+                    { "numericPrice", -1 }
+                }),
+                new BsonDocument("$limit", 1),
+                new BsonDocument("$project", new BsonDocument
+                {
+                    { "numericPrice", 0 }
+                })
+            };
+
+            var result = await _collection.Aggregate<Product>(pipeline).FirstOrDefaultAsync();
+            var product = _mapper.Map<ResultProductDto>(result);
+            return product;
+        }
+
+        public async Task<ResultProductDto> MostCheapProduct()
+        {
+            var pipeline = new BsonDocument[]
+            {
+                new BsonDocument("$addFields", new BsonDocument
+                {
+                    { "numericPrice", new BsonDocument("$toDouble", "$Price") }
+                }),
+                new BsonDocument("$sort", new BsonDocument
+                {
+                    { "numericPrice", 1 }
+                }),
+                new BsonDocument("$limit", 1),
+                new BsonDocument("$project", new BsonDocument
+                {
+                    { "numericPrice", 0 }
+                })
+            };
+
+            var result = await _collection.Aggregate<Product>(pipeline).FirstOrDefaultAsync();
+            var product = _mapper.Map<ResultProductDto>(result);
+            return product;
         }
     }
 }

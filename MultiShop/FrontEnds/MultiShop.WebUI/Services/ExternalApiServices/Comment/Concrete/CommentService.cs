@@ -39,9 +39,19 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Comment.Services.Concrete
             await _catalogApiResourceOwnerPasswordCommentApi.UpdateComment(dto);
         }
 
-        public async Task<List<ResultUserCommentDto>> GetAllByProductId(string productId, bool status = true)
+        public async Task<List<ResultUserCommentDto>> GetAllByProductId(string productId, bool status)
         {
             return await _catalogApiClientCredential.GetCommentsByProductId(productId, status);
+        }
+
+        public async Task<int> CountByStatus(bool status)
+        {
+            return await _catalogApiClientCredential.GetCommentCountByStatus(status);
+        }
+
+        public async Task<int> CountTotal()
+        {
+            return await _catalogApiClientCredential.GetTotalCountOfComment();
         }
     }
 }

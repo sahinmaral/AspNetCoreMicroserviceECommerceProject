@@ -1,0 +1,54 @@
+﻿@model List<ResultOrderingByUserIdDto>
+
+@{
+    ViewData["Title"] = "Siparişlerim";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+    var tableRowColors = new List<string> { "table-info", "table-warning", "table-danger", "table-success", "table-primary", "table-dark", "table-secondary" };
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Siparişlerim</h4>
+            <p class="card-description">
+                Sipariş ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz.
+            </p>
+            <div class="table-responsive pt-3">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Toplam Fiyat
+                            </th>
+                            <th>
+                                Sipariş Tarihi
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            var ordering = Model[i];
+                            var rowColor = tableRowColors[i % tableRowColors.Count];
+                            <tr class="@rowColor">
+                                <td>
+                                    @ordering.TotalPrice.ToString("C")
+                                </td>
+                                <td>
+                                    @ordering.OrderDate.ToShortDateString()
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href="/my-order/@ordering.Id">Sipariş Detayı</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,8 @@ using MultiShop.WebUI.Services.Authentication.Services.Concrete;
 using MultiShop.WebUI.Services.ExternalApiServices.Basket.Abstract;
 using MultiShop.WebUI.Services.ExternalApiServices.Basket.Concrete;
 using MultiShop.WebUI.Services.ExternalApiServices.Basket.Services.Abstract;
+using MultiShop.WebUI.Services.ExternalApiServices.Cargo.Abstract;
+using MultiShop.WebUI.Services.ExternalApiServices.Cargo.Concrete;
 using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Concrete;
 using MultiShop.WebUI.Services.ExternalApiServices.Comment.Abstract;
@@ -15,8 +17,12 @@ using MultiShop.WebUI.Services.ExternalApiServices.Discount.Abstract;
 using MultiShop.WebUI.Services.ExternalApiServices.Discount.Services.Abstract;
 using MultiShop.WebUI.Services.ExternalApiServices.Discount.Services.Concrete;
 using MultiShop.WebUI.Services.ExternalApiServices.Identity;
+using MultiShop.WebUI.Services.ExternalApiServices.Message.Abstract;
+using MultiShop.WebUI.Services.ExternalApiServices.Message.Concrete;
 using MultiShop.WebUI.Services.ExternalApiServices.Order.Abstract;
 using MultiShop.WebUI.Services.ExternalApiServices.Order.Concrete;
+using MultiShop.WebUI.Services.ExternalApiServices.Statistic.Abstract;
+using MultiShop.WebUI.Services.ExternalApiServices.Statistic.Concrete;
 using MultiShop.WebUI.Services.Ocelot.Models;
 
 using Refit;
@@ -85,6 +91,14 @@ builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.AddScoped<IDiscountService, DiscountService>();
 
 builder.Services.AddScoped<IOrderAddressService, OrderAddressService>();
+builder.Services.AddScoped<IOrderOrderingService, OrderOrderingService>();
+
+builder.Services.AddScoped<IMessageService, MessageService>();
+
+builder.Services.AddScoped<ICargoCompanyService, CargoCompanyService>();
+builder.Services.AddScoped<ICargoCustomerService, CargoCustomerService>();
+
+builder.Services.AddScoped<IStatisticService, StatisticService>();
 
 builder.Services.AddAccessTokenManagement();
 
@@ -105,6 +119,15 @@ builder.Services.AddHttpClient("ResourceOwnerPasswordCatalogApi", c =>
 
 builder.Services.AddRefitClient<IBasketApi>()
     .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{serviceApiSettings.OcelotGatewayUrl}/{serviceApiSettings.Basket.Path}"))
+    .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddRefitClient<ICargoApi>()
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{serviceApiSettings.OcelotGatewayUrl}/{serviceApiSettings.Cargo.Path}"))
+    .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+
+builder.Services.AddRefitClient<IMessageApi>()
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{serviceApiSettings.OcelotGatewayUrl}/{serviceApiSettings.Message.Path}"))
     .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddRefitClient<IOrderApi>()

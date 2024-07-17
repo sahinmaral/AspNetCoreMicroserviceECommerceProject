@@ -1,0 +1,53 @@
+﻿@model List<UserDetailViewModel>
+
+@{
+    ViewData["Title"] = "Kullanıcılar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>Kullanıcı işlemleri</h1>
+</section>
+
+<div class="chart-box">
+    <section class="content-header">
+        <h3>Kullanıcı listesi</h3>
+        <p>Kullanıcı ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz.</p>
+    </section>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Adı soyadı</th>
+                <th>Kullanıcı adı</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>
+                        <p style="padding: 12px 0px;">@user.Name @user.Surname</p>
+                    </td>
+                    <td>
+                        <p style="padding: 12px 0px;">@user.UserName</p>
+                    </td>
+                    <td>
+                        <ul class="sidebar-menu" data-widget="tree">
+                            <li class="treeview">
+                                <a href="#"> <span>Seçenekler</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="/admin/user/address/@user.Id"><i class="fa fa-angle-right"></i>Adres Detayı</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

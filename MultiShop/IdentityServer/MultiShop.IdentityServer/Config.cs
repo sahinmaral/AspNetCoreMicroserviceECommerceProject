@@ -86,6 +86,14 @@ namespace MultiShop.IdentityServer
                     "ImageStorageFullPermission",
                 }
             },
+            new ApiResource
+            {
+                Name = "ResourceMessage",
+                Scopes =
+                {
+                    "MessageFullPermission",
+                }
+            },
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -150,6 +158,11 @@ namespace MultiShop.IdentityServer
             },
             new ApiScope
             {
+                Name = "MessageFullPermission",
+                DisplayName = "Full authority for message operations"
+            },
+            new ApiScope
+            {
                 Name = "OcelotFullPermission",
                 DisplayName = "Full authority for ocelot operations"
             },
@@ -188,6 +201,8 @@ namespace MultiShop.IdentityServer
                     "ImageStorageFullPermission",
                     "DiscountFullPermission",
                     "OrderFullPermission",
+                    "MessageFullPermission",
+                    "CargoFullPermission",
                     "OcelotFullPermission",
                     IdentityServerConstants.LocalApi.ScopeName,
                     IdentityServerConstants.StandardScopes.Email,

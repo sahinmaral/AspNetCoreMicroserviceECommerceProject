@@ -51,5 +51,25 @@ namespace MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Concrete
         {
             await _catalogApiResourceOwnerPasswordCatalogApi.UpdateProductImages(model);
         }
+
+        public async Task<decimal> AveragePriceAsync()
+        {
+            return await _catalogApiClientCredential.AveragePriceOfProducts();
+        }
+
+        public async Task<int> CountAsync()
+        {
+            return await _catalogApiClientCredential.CountOfProducts();
+        }
+
+        public async Task<ResultProductDto> MostCheapProduct()
+        {
+            return await _catalogApiClientCredential.MostCheapProduct();
+        }
+
+        public async Task<ResultProductDto> MostExpensiveProduct()
+        {
+            return await _catalogApiClientCredential.MostExpensiveProduct();
+        }
     }
 }
