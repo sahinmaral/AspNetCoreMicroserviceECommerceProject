@@ -1,6 +1,9 @@
-﻿using MultiShop.WebUI.Dtos.Comment;
+﻿using Microsoft.AspNetCore.SignalR;
+
+using MultiShop.WebUI.Dtos.Comment;
 using MultiShop.WebUI.Services.ExternalApiServices.Catalog.Services.Abstract;
 using MultiShop.WebUI.Services.ExternalApiServices.Comment.Abstract;
+using MultiShop.WebUI.SignalR.Hubs;
 
 using Refit;
 

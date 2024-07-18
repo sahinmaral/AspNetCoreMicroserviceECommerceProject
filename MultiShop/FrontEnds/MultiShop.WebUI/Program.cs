@@ -23,7 +23,11 @@ using MultiShop.WebUI.Services.ExternalApiServices.Order.Abstract;
 using MultiShop.WebUI.Services.ExternalApiServices.Order.Concrete;
 using MultiShop.WebUI.Services.ExternalApiServices.Statistic.Abstract;
 using MultiShop.WebUI.Services.ExternalApiServices.Statistic.Concrete;
+using MultiShop.WebUI.Services.MailService;
 using MultiShop.WebUI.Services.Ocelot.Models;
+using MultiShop.WebUI.Services.RapidApi.FinanceExchange;
+using MultiShop.WebUI.Services.RapidApi.Weather;
+using MultiShop.WebUI.SignalR.Hubs;
 
 using Refit;
 
@@ -100,6 +104,8 @@ builder.Services.AddScoped<ICargoCustomerService, CargoCustomerService>();
 
 builder.Services.AddScoped<IStatisticService, StatisticService>();
 
+builder.Services.AddScoped<IMailService, MailService>();
+
 builder.Services.AddAccessTokenManagement();
 
 var refitSettings = new RefitSettings
@@ -124,7 +130,6 @@ builder.Services.AddRefitClient<IBasketApi>()
 builder.Services.AddRefitClient<ICargoApi>()
     .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{serviceApiSettings.OcelotGatewayUrl}/{serviceApiSettings.Cargo.Path}"))
     .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
 
 builder.Services.AddRefitClient<IMessageApi>()
     .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{serviceApiSettings.OcelotGatewayUrl}/{serviceApiSettings.Message.Path}"))
@@ -154,11 +159,36 @@ builder.Services.AddHttpClient("ResourceOwnerPasswordDiscountApi", c =>
     .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>()
     .AddTypedClient(c => RestService.For<IDiscountApi>(c, refitSettings));
 
+var weatherApiKey = builder.Configuration["RapidApi:Weather:ApiKey"];
+var weatherApiBaseUrl = builder.Configuration["RapidApi:Weather:BaseUrl"];
+
+var financeExchangeApiKey = builder.Configuration["RapidApi:FinanceExchange:ApiKey"];
+var financeExchangeApiBaseUrl = builder.Configuration["RapidApi:FinanceExchange:BaseUrl"];
+var financeExchangeHost = builder.Configuration["RapidApi:FinanceExchange:Host"];
+
+builder.Services.AddRefitClient<IWeatherApi>()
+        .ConfigureHttpClient(c =>
+        {
+            c.BaseAddress = new Uri(weatherApiBaseUrl);
+            c.DefaultRequestHeaders.Add("x-rapidapi-key", weatherApiKey);
+        });
+
+builder.Services.AddRefitClient<IFinanceExchangeApi>()
+        .ConfigureHttpClient(c =>
+        {
+            c.BaseAddress = new Uri(financeExchangeApiBaseUrl);
+            c.DefaultRequestHeaders.Add("x-rapidapi-key", financeExchangeApiKey);
+            c.DefaultRequestHeaders.Add("x-rapidapi-host", financeExchangeHost);
+        });
+
+
 builder.Services.AddSingleton<IIdentityApi>((sp) =>
 {
 	IIdentityApi identityApi = RestService.For<IIdentityApi>(builder.Configuration["IdentityApiUrl"]);
 	return identityApi;
 });
+
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -184,5 +214,7 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapHub<SignalRHub>("/SignalRHub");
 
 app.Run();

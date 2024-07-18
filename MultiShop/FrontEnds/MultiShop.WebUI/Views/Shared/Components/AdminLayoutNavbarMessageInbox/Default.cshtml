@@ -1,0 +1,32 @@
+﻿@model List<ResultInboxMessageDto>
+
+@{
+    string shortifyContent(string content)
+    {
+        return content.Length > 50 ? content.Substring(0, 50) + " ..." : content;
+    }
+}
+
+<li class="dropdown messages-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="icon-envelope"></i>
+        <div class="notify"> <span class="badge">@Model.Count</span> <span class="point"></span> </div>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="header">@Model.Count mesajınız var</li>
+        <li>
+            <ul class="menu">
+                @foreach(var message in Model)
+                {
+                    <li>
+                        <a href="/user/message/detail/@message.Id">
+                            <h4>@message.Sender.Name @message.Sender.Surname</h4>
+                            <p>@shortifyContent(message.Content)</p>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+        <li class="footer"><a href="#">Check all notifications</a></li>
+    </ul>
+</li>

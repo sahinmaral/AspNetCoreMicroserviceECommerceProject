@@ -1,8 +1,85 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Anasayfa";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var currentWeather = ViewBag.CurrentWeather as WeatherApiResponseModel;
+    var usdToTryExchangeRate = ViewBag.UsdToTryExchangeRate as FinanceExchangeResponseModel;
 }
 
 <section class="content-header">
-    <h1>Home</h1>
+    <h1>Anasayfa</h1>
 </section>
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>SignalR Bağlantı</h5>
+                <h3 id="connStatus">0</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="media-box bg-sea">
+            <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
+            <div class="media-info">
+                <h5>Toplam Yorum Sayısı</h5>
+                <h3 id="totalCommentCount"></h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        @if (currentWeather is not null)
+        {
+            var weather = currentWeather.Weather.First();
+            string iconName = weather.Icon;
+            string iconLink = $"https://openweathermap.org/img/wn/{iconName}@2x.png";
+
+            <div class="media-box">
+                <div class="media-icon pull-left"><img src="@iconLink" /> </div>
+                <div class="media-info">
+                    <h5>Hava Durumu</h5>
+                    <h3>@weather.Main</h3>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        @if (usdToTryExchangeRate is not null)
+        {
+            <div class="media-box">
+                <div class="media-info">
+                    <h4>Dolar Alış - @usdToTryExchangeRate.data.previous_close.ToString("C")</h4>
+                    <h4>Dolar Satış - @usdToTryExchangeRate.data.exchange_rate.ToString("C")</h4>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(() => {
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("http://localhost:7075/SignalRHub")
+                .build();
+
+            $("#connStatus").text(connection.state);
+
+            connection.start().then(function () {
+                $("#connStatus").text(connection.state);
+                connection.invoke("SendTotalCommentCount").catch(function (err) {
+                    return console.error(err.toString());
+                });
+            }).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+            connection.on("ReceiveTotalCommentCount", function (totalCommentCount) {
+                $("#totalCommentCount").text(totalCommentCount)
+            });
+
+        })
+    </script>
+}
