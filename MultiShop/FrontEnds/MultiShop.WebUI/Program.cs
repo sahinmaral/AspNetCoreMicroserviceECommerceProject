@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Options;
 
 using MultiShop.WebUI.Services.Authentication.Handlers;
 using MultiShop.WebUI.Services.Authentication.Models;
@@ -31,7 +34,24 @@ using MultiShop.WebUI.SignalR.Hubs;
 
 using Refit;
 
+using System.Globalization;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo("tr-TR"),
+        new CultureInfo("en-US"),
+    };
+
+    options.DefaultRequestCulture = new RequestCulture("tr-TR");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+});
 
 builder.Services.AddAuthentication(options =>
 {
@@ -59,7 +79,10 @@ builder.Services.AddOptions<ClientSettings>().BindConfiguration(nameof(ClientSet
 builder.Services.AddOptions<ServiceApiSettings>().BindConfiguration(nameof(ServiceApiSettings));
 
 // Add services to the container.
-var mvcBuilder = builder.Services.AddControllersWithViews();
+var mvcBuilder = builder.Services
+    .AddControllersWithViews()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
 
 if (builder.Environment.IsDevelopment())
 {
@@ -200,7 +223,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+var localizationOptions = app.Services.GetService<IOptions<RequestLocalizationOptions>>()!.Value;
+
 app.UseStaticFiles();
+app.UseRequestLocalization(localizationOptions);
 
 app.UseRouting();
 

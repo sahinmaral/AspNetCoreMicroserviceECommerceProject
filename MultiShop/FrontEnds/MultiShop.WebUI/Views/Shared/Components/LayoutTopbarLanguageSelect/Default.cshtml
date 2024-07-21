@@ -1,0 +1,26 @@
+﻿@model LanguageSelectViewModel
+
+<div class="btn-group">
+    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+        @Localizer[Model.CurrentCulture.Name]
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+        @foreach (var culture in Model.SupportedCultures)
+        {
+            <button class="dropdown-item" type="button" data-culture="@culture.Name">@Localizer[culture.Name]</button>
+        }
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.dropdown-item').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var culture = this.getAttribute('data-culture');
+                var currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('culture', culture);
+                window.location.href = currentUrl.toString();
+            });
+        });
+    });
+</script>

@@ -33,12 +33,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.IdentityServer", "IdentityServer\MultiShop.IdentityServer\MultiShop.IdentityServer.csproj", "{DD8243A0-2B98-4231-B97F-3FA03E0A1AD5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{430EFA6B-A8C7-43B2-A616-F17CF404C07A}"
-	ProjectSection(SolutionItems) = preProject
-		PortNumbers.txt = PortNumbers.txt
-		UserExamples.txt = UserExamples.txt
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cargo", "Cargo", "{9389D8C0-6718-4041-BEB9-95673A447BFC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Cargo.Business", "Services\Cargo\MultiShop.Cargo.Business\MultiShop.Cargo.Business.csproj", "{BC060B59-41D4-469F-8526-82C448C93BEB}"
@@ -65,8 +59,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Comment", "Servic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{0DCF7A56-1B6D-4E55-BAF2-242C6F943DBD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RapidApi", "RapidApi", "{9030727C-B41B-460B-8E19-C519AA51EDC7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.OcelotGateway", "ApiGateway\MultiShop.OcelotGateway\MultiShop.OcelotGateway.csproj", "{D9724E35-28FB-4BA2-8DDA-1F7AD64E0FB2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{504877DA-67DB-4A05-AFC4-2AFC5DED90DE}"
@@ -80,6 +72,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Message", "Message", "{FF712303-22B0-4424-8344-516711174FBE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Message", "Services\MultiShop.Message\MultiShop.Message.csproj", "{A8DD21F7-637C-4BCC-95A2-840796819F81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{C43F0AD6-FE21-4C86-B1EC-D0B6D540B043}"
+	ProjectSection(SolutionItems) = preProject
+		Requirements\CodeExamples.txt = Requirements\CodeExamples.txt
+		Requirements\OcelotCodeExample.txt = Requirements\OcelotCodeExample.txt
+		Requirements\PortNumbers.txt = Requirements\PortNumbers.txt
+		Requirements\TODO.md = Requirements\TODO.md
+		Requirements\UserExamples.txt = Requirements\UserExamples.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

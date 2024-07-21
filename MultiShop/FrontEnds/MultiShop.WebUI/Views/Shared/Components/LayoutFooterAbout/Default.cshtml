@@ -2,7 +2,7 @@
 
 @foreach(var about in Model)
 {
-    <h5 class="text-secondary text-uppercase mb-4">Hakkımızda</h5>
+    <h5 class="text-secondary text-uppercase mb-4">@Localizer["AboutUs"]</h5>
     <p class="mb-4">@about.Description</p>
     <p class="mb-2"><i class="fa fa-map-marker text-primary mr-3"></i>@about.Address</p>
     <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>@about.Email</p>

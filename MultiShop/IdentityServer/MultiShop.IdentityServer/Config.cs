@@ -2,9 +2,6 @@
 using IdentityServer4.Models;
 
 using System.Collections.Generic;
-using System.Xml.Linq;
-
-using static System.Formats.Asn1.AsnWriter;
 
 namespace MultiShop.IdentityServer
 {

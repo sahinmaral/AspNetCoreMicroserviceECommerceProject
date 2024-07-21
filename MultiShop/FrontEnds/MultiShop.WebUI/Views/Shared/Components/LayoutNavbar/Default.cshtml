@@ -3,7 +3,7 @@
     <div class="row px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
             <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
-                <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Kategoriler</h6>
+                <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>@Localizer["Categories"]</h6>
                 <i class="fa fa-angle-down text-dark"></i>
             </a>
             <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
@@ -23,8 +23,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="@ViewData["HomeUrl"]" class="nav-item nav-link">Anasayfa</a>
-                        <a href="/products" class="nav-item nav-link">Ürünler</a>
+                        <a href="@ViewData["HomeUrl"]" class="nav-item nav-link">@Localizer["Homepage"]</a>
+                        <a href="/products" class="nav-item nav-link">@Localizer["Products"]</a>
 @*                         <a href="detail.html" class="nav-item nav-link">Günün Fırsatı</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sayfalar <i class="fa fa-angle-down mt-1"></i></a>
@@ -33,7 +33,7 @@
                                 <a href="checkout.html" class="dropdown-item">Ödeme</a>
                             </div>
                         </div> *@
-                        <a href="/contact-us" class="nav-item nav-link active">İletişime Geç</a>
+                        <a href="/contact-us" class="nav-item nav-link active">@Localizer["ContactUs"]</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                         <a href="" class="btn px-0">
